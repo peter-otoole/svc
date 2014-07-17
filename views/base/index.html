@@ -1,0 +1,269 @@
+<HTML>
+<HEAD>
+<TITLE>Social Visual Communication</TITLE>
+<link rel="shortcut icon" href="resources/imgs/favicon.png" />
+<link rel="icon" type="image/x-icon" href="/resources/imgs/favicon.png">
+<meta itemprop="image" content="resources/imgs/favicon.png">
+<meta content="text/html; charset=utf-8" http-equiv="content-type" />
+<link href="/resources/css/main-layout.css" type="text/css" rel="stylesheet" />
+<link href="/resources/css/dialog-window.css" type="text/css" rel="stylesheet" />
+<link href="/resources/css/sign-in.css" type="text/css" rel="stylesheet" />
+<link href="/resources/css/register.css" type="text/css" rel="stylesheet" />
+<link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="/resources/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="/resources/js/main-signed-out.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+</HEAD>
+<BODY>
+<div id="banner">
+<div id="banner_logo-img"></div>
+<div id="banner_title">Social Visual Communication</div>
+</div>
+<div id="main-content">
+<div id="bgimage"></div>
+<div id="replaceable-small"></div>
+</div>
+<div class="dialog-window"></div>
+<div class="res">
+<span id="dialog-window-html-original">
+<div class="dialog-window-backdrop"></div>
+<div class="dialog-window-container">
+<div class="dialog-window-foreground">
+<div class="dialog-window-top-exit"></div>
+<div class="dialog-window-header"><p class="dialog-window-header-text">Reset Your Password</p></div>
+<div class="dialog-window-full-separator"></div>
+<div class="dialog-window-main-content">
+<div class="forgot-password-dialog">
+<table class="table-dialog-width">
+<tr>
+<td class="td-dialog-text" colspan="2" >Enter your email address to reset your password.</td> 
+</tr>
+<tr class="tr-f-p-table" ></tr>
+<tr>
+<td class="td-dialog-text-2" >Email Address:</td> 
+<td class="td-input"><input type="email" class="input-dialog-f-p" name="reset-pass-emailAddress" id="reset-pass-emailAddress" placeholder="john-doe@example.com" /></td>
+</tr>
+</table>
+</div>
+</div>
+<div class="dialog-window-full-separator"></div>
+<div class="dialog-window-footer">
+<div id="dialog-window-footer-button_container">
+<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+<button id="dialog-window-submit-button" class="dialog-window-footer-button">Submit</button>
+</div>
+</div>
+</div>
+</div>
+</span>
+<span id="dialog-window-html-success"> 
+<div class="dialog-window-backdrop"></div>
+<div class="dialog-window-container">
+<div class="dialog-window-foreground">
+<div class="dialog-window-top-exit"></div>
+<div class="dialog-window-header"><p class="dialog-window-header-text">Reset Your Password</p></div>
+<div class="dialog-window-full-separator"></div>
+<div class="dialog-window-main-content">
+<div class="forgot-password-dialog">
+<table class="table-dialog-width">
+<tr>
+<td class="td-dialog-text" colspan="2" >We have sent you an email with instructions on how to change your password.</td> 
+</tr>
+</table>
+</div>
+</div>
+<div class="dialog-window-full-separator"></div>
+<div class="dialog-window-footer">
+<div id="dialog-window-footer-button_container">
+<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+</div>
+</div>
+</div>
+</div>
+</span>
+<span id="dialog-window-html-failure">
+<div class="dialog-window-backdrop"></div>
+<div class="dialog-window-container">
+<div class="dialog-window-foreground">
+<div class="dialog-window-top-exit"></div>
+<div class="dialog-window-header"><p class="dialog-window-header-text">Reset Your Password</p></div>
+<div class="dialog-window-full-separator"></div>
+<div class="dialog-window-main-content">
+<div class="forgot-password-dialog">
+<table class="table-dialog-width">
+<tr>
+<td class="td-dialog-text" colspan="2" >We could not reset the password, please check that your email address is correct and try again.</td> 
+</tr>
+</table>
+</div>
+</div>
+<div class="dialog-window-full-separator"></div>
+<div class="dialog-window-footer">
+<div id="dialog-window-footer-button_container">
+<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+</div>
+</div>
+</div>
+</div>
+</span>
+<span id="dialog-window-registration-success">
+<div class="dialog-window-backdrop"></div>
+<div class="dialog-window-container">
+<div class="dialog-window-foreground">
+<div class="dialog-window-top-exit"></div>
+<div class="dialog-window-header"><p class="dialog-window-header-text">Registration</p></div>
+<div class="dialog-window-full-separator"></div>
+<div class="dialog-window-main-content">
+<div class="forgot-password-dialog">
+<table class="table-dialog-width">
+<tr>
+<td class="td-dialog-text" colspan="2" >Thank you for registering with SVC, we have sent you an email with instructions to activate your account.</td> 
+</tr>
+<tr class="tr-f-p-table" ></tr>
+<tr>
+<td class="td-dialog-text" colspan="2" >Note you have to active before you can sign in.</td> 
+</tr>
+</table>
+</div>
+</div>
+<div class="dialog-window-full-separator"></div>
+<div class="dialog-window-footer">
+<div id="dialog-window-footer-button_container">
+<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+</div>
+</div>
+</div>
+</div>
+</span>
+<span id="dialog-window-registration-active">
+<div class="dialog-window-backdrop"></div>
+<div class="dialog-window-container">
+<div class="dialog-window-foreground">
+<div class="dialog-window-top-exit"></div>
+<div class="dialog-window-header"><p class="dialog-window-header-text">Account is Active</p></div>
+<div class="dialog-window-full-separator"></div>
+<div class="dialog-window-main-content">
+<div class="forgot-password-dialog">
+<table class="table-dialog-width">
+<tr>
+<td class="td-dialog-text" colspan="2" >Thank you, your account is now active, you may now sign in and enjoy SVC.</td> 
+</tr>
+</table>
+</div>
+</div>
+<div class="dialog-window-full-separator"></div>
+<div class="dialog-window-footer">
+<div id="dialog-window-footer-button_container">
+<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+</div>
+</div>
+</div>
+</div>
+</span>
+<span id="dialog-window-registration-active-failed">
+<div class="dialog-window-backdrop"></div>
+<div class="dialog-window-container">
+<div class="dialog-window-foreground">
+<div class="dialog-window-top-exit"></div>
+<div class="dialog-window-header"><p class="dialog-window-header-text">Activation Failed</p></div>
+<div class="dialog-window-full-separator"></div>
+<div class="dialog-window-main-content">
+<div class="forgot-password-dialog">
+<table class="table-dialog-width">
+<tr>
+<td class="td-dialog-text" colspan="2" >We were unable to active your account, please try again. We appologist for any inconvenience.</td> 
+</tr>
+</table>
+</div>
+</div>
+<div class="dialog-window-full-separator"></div>
+<div class="dialog-window-footer">
+<div id="dialog-window-footer-button_container">
+<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+</div>
+</div>
+</div>
+</div>
+</span>
+<span id="dialog-window-reset-password-original">
+<div class="dialog-window-backdrop"></div>
+<div class="dialog-window-container">
+<div class="dialog-window-foreground">
+<div class="dialog-window-header"><p class="dialog-window-header-text">Reset Password</p></div>
+<div class="dialog-window-full-separator"></div>
+<div class="dialog-window-main-content">
+<table>
+<tr>
+<td class="td-dialog-text" colspan="2" >Please enter and confirm your new password.</td> 
+<tr class="tr-f-p-table"></tr>
+</tr>
+<tr>
+<td class="change-password-text">New Password:</td>
+<td><input type="password" class="input" id="newPassword" name="newPassword" value="" placeholder="Minimum 8 Characters" /></td>
+</tr>
+<tr>
+<td class="change-password-text">Confirm Password:</td>
+<td><input type="password" class="input" id="cPassword" name="cPassword" value="" placeholder="Minimum 8 Characters" /></td>
+</tr></table>
+</div>
+<div class="dialog-window-full-separator"></div>
+<div class="dialog-window-footer">
+<div id="dialog-window-footer-button_container">
+<button id="dialog-window-submit-button" class="dialog-window-footer-button">Submit</button>
+</div>
+</div>
+</div>
+</div>
+</span>
+<span id="dialog-window-reset-password-success">
+<div class="dialog-window-backdrop"></div>
+<div class="dialog-window-container">
+<div class="dialog-window-foreground">
+<div class="dialog-window-top-exit"></div>
+<div class="dialog-window-header"><p class="dialog-window-header-text">Password Reset</p></div>
+<div class="dialog-window-full-separator"></div>
+<div class="dialog-window-main-content">
+<table>
+<tr>
+<td class="td-dialog-text" colspan="2" >Thank you, your password is now reset.</td> 
+</tr>
+</table>
+</div>
+<div class="dialog-window-full-separator"></div>
+<div class="dialog-window-footer">
+<div id="dialog-window-footer-button_container">
+<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+</div>
+</div>
+</div>
+</div>
+</span>
+<span id="dialog-window-reset-password-failed">
+<div class="dialog-window-backdrop"></div>
+<div class="dialog-window-container">
+<div class="dialog-window-foreground">
+<div class="dialog-window-top-exit"></div>
+<div class="dialog-window-header"><p class="dialog-window-header-text">Reset Failed</p></div>
+<div class="dialog-window-full-separator"></div>
+<div class="dialog-window-main-content">
+<table>
+<tr>
+<td class="td-dialog-text" colspan="2" >Sorry we could not reset your password, please try again. We appologist for any inconvenience.</td> 
+</tr>
+</table>
+</div>
+<div class="dialog-window-full-separator"></div>
+<div class="dialog-window-footer">
+<div id="dialog-window-footer-button_container">
+<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+</div>
+</div>
+</div>
+</div>
+</span>
+<span id="dialog-to-open">#{resValDialog}</span>
+<span id="emailaddress">#{email}</span>
+<span id="key">#{key}</span>
+</div>
+</BODY>
+</HTML>

@@ -1,0 +1,23 @@
+<link href="/resources/css/main-logged-in.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="/resources/js/drawing.js"></script>
+<div id="main-left">
+<canvas id="drawing-canvas" width="700" height="700" />
+</div>
+<div id="main-right">
+<div id="welcome-message">Welcome #{userName}</div>
+<div id="welcome-message-seperator"></div>
+<div id="private-session" class="home-buttons">Start a Private Session</div>
+<div id="group-session" class="home-buttons">Start a Group Session</div>
+<div id="message-friend" class="home-buttons">Message A Friend</div>
+<div id="find-friends" class="home-buttons">Find Your Friends</div>
+<div id="view-drawings" class="home-buttons">View My Drawings</div>
+</div>
+<div id="private-session-settings-dialog" style="display: none" class="dialog">
+<div id="private-session-dialog">
+<td class="td-dialog-text" >Canvas Name:</td> 
+<td class="td-input"><input type="text" id="canvas-name" name="canvas-name" ></td>
+</div>
+</div>
+<div class="res">
+<span id="res-my-name">#{userName}</span>
+</div>

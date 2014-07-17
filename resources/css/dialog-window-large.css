@@ -1,0 +1,251 @@
+.dialog-window-large{
+	visibility:hidden;
+}
+.dialog-window-backdrop-large{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.3);
+	z-index: 1200;
+}
+.dialog-window-container-large{
+	position: relative;
+	top: 0px;
+	margin: 60px auto auto auto;
+	width: 680px;
+	height: 710px;
+	z-index: 1300;
+}
+.dialog-window-foreground-large{
+	position: absolute;
+	width:100%;
+	height:100%;
+	background-color: rgba(255,255,255,1.0);
+	box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+	border-radius: 15px;
+	padding: 20px 20px 20px 20px;
+	z-index: 1400;
+}
+.dialog-window-top-exit-large{
+	float: right;
+	background-image:url("/resources/imgs/exit-button.png");
+	background-repeat: no-repeat;
+	background-size: 25px 25px;
+	background-position:center; 
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+}
+.dialog-window-top-exit-large:hover{
+	float: right;
+	background-image:url("/resources/imgs/exit-button-light.png");
+	background-repeat: no-repeat;
+	background-size: 25px 25px;
+	background-position:center; 
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+}
+.dialog-window-header-large{	
+	float: left;
+	margin-top: 0px;
+	margin-left: 40px;
+	width: 87%;
+	height: 50px;
+}
+.dialog-window-header-text-large{
+	color:#000000;
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	font-weight:bold;
+	letter-spacing: 1px;
+	font-size:36px;
+	text-align:center;
+	margin: 0px;
+}
+
+.dialog-window-full-separator-large{
+	clear:both;
+	position: relative;
+	margin: 10px auto 10px auto;
+	width: 100%;
+	height: 3px;
+	border-radius: 5px;
+	background-color: rgba(133,5,164,1.0);
+	box-shadow: 0px 0px 20px rgba(70,1,87,0.5);
+}
+
+.dialog-window-main-content-large{
+	margin: 20px 20px 0px 20px;
+	width: 640px;
+	height: 580px;
+}
+.dialog-window-footer-large{
+	margin: 0px 0px 10px 40px;
+	height: 40px;
+}
+.dialog-window-footer-button_container-large{
+	float:right;
+}
+.dialog-window-footer-button-large{
+	margin-top: 10px;
+	float:right;
+	margin-left:20px;
+	height: 30px;
+	width: 100px;
+	font-weight:bold;
+	color:#000000;
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	letter-spacing: 1px;
+	font-size:20px;
+	text-align:center;
+	border-radius: 3px;
+	box-shadow: 0px 0px 20px rgba(70,1,87,0.7);
+	cursor: pointer;
+}
+.view-my-drawings-drawing-nav-container{
+	width: 100%;
+	clear:both;
+}
+.message-dialog-large-left{
+	width: 50px;
+	height: 300px;
+	float:left;
+	background-image:url("/resources/imgs/canvas-back-button.png");
+	background-repeat: no-repeat;
+	background-size: 50px 300px;
+	background-position:center; 
+	margin: 100px 10px 100px 0px;
+	cursor: pointer;
+}
+.message-dialog-large-left:hover{
+	width: 50px;
+	float:left;
+	height: 300px;
+	background-image:url("/resources/imgs/canvas-back-button-highlighted.png");
+	background-repeat: no-repeat;
+	background-size: 50px 300px;
+	background-position:center; 
+	margin: 100px 10px 100px 0px;
+	cursor: pointer;
+}
+.message-dialog-large-middle{
+	width: 520px;
+	height: 520px;
+	float:left;
+}
+.message-dialog-large-right{
+	width: 50px;
+	float:left;
+	height: 300px;
+	background-image:url("/resources/imgs/canvas-next-button.png");
+	background-repeat: no-repeat;
+	background-size: 50px 300px;
+	background-position:center; 
+	margin: 100px 0px 100px 10px;
+	cursor: pointer;
+}
+.message-dialog-large-right:hover{
+	width: 50px;
+	float:left;
+	height: 300px;
+	background-image:url("/resources/imgs/canvas-next-button-highlighted.png");
+	background-repeat: no-repeat;
+	background-size: 50px 300px;
+	background-position:center; 
+	margin: 100px 0px 100px 10px;
+	cursor: pointer;
+}
+#dialog-window-canvas-container{
+	position: relative;
+	width: 520px;
+	height: 520px;
+	background-color: rgba(69,17,170, 1.0);
+	border-radius: 10px;
+}
+#view-drawings-canvas {
+	position:absolute;
+	top: 10px;
+	left: 10px;
+	width: 500px;
+	height: 500px;
+	background-color: rgba(255, 255, 255, 1.0);
+}
+.view-my-drawings-buttons-container{
+	margin: 0px auto 0px auto;
+	width: 220px;
+}
+.view-my-drawings-buttons{
+	color:#0066CC;
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	font-weight:bold;
+	letter-spacing: 1px;
+	font-size:20px;
+	text-align:center;
+	float: left;
+	cursor: pointer;
+	margin: 00px 0px 10px 0px;
+}
+.view-my-drawings-buttons:hover{
+	color:#999999;
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	font-weight:bold;
+	letter-spacing: 1px;
+	font-size:20px;
+	text-align:center;
+	float: left;
+	cursor: pointer;
+	margin: 0px 0px 10px 0px;
+}
+.view-my-drawings-buttons-separator {
+	color:#0066CC;
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	font-weight:bold;
+	letter-spacing: 1px;
+	font-size:20px;
+	text-align:center;
+	float: left;
+	cursor: defualt;
+	margin: 0px 10px 10px 10px;
+}
+.edit-layers-main-container {
+	margin: 10px 20px 10px 20px;
+	box-shadow: 0px 0px 20px rgba(69,17,170, 0.5);
+	resize: none;
+	overflow-y:scroll;
+	overflow-x:none;
+	height: 570px;
+}
+.edit-layers-shape-container {
+	margin: 10px 20px 10px 20px;
+}
+.edit-layers-canvas {
+	margin-bottom: 10px;
+	width: 200px;
+	height: 200px;
+	float: left;
+}
+.edit-layers-option-container{
+	margin-bottom: 10px;
+	margin-left: 40px;
+	background-color: rgba(133,5,164,0.1);
+	padding-left: 20px;
+	width: 280px;
+	height: 200px;
+	float: right;
+}
+.edit-layers-shape-name{
+	color: rgba(100,100,100,1.0);
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	letter-spacing: 1px;
+	font-size: 2.5em;
+	margin-bottom: 10px;
+	text-align: center;
+}

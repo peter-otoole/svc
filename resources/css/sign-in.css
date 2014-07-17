@@ -1,0 +1,146 @@
+#sign-in {
+	
+	width: 400px;
+	margin-top: 0px;
+	background-color: rgba(133,5,164,1.0);
+	box-shadow: 0px 0px 20px rgba(70,1,87,1.0);
+	min-height: 200px;
+	border-radius: 20px;
+	padding: 2%;
+	float: right;
+}
+
+#sign-in_top {
+
+	text-align: center;
+	margin-bottom: 30px;
+	color:#FFFFFF;
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	letter-spacing: 1px;
+	font-size:36px;
+}
+
+#sign-in_middle-double {
+
+	width: 100%;
+	margin-bottom: 40px;
+}
+
+.sign-in-table-text {
+	
+	width: 215px;
+	color:#FFFFFF;
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	letter-spacing: 1px;
+	font-size:20px;
+	line-height: 1.55;
+}
+
+#sign-in-table {
+	
+	width:100%;
+}
+
+.input {
+
+	width: 180px;
+	box-shadow: 0px 0px 20px rgba(69,17,170, 1.0);
+}
+
+#sign-in-table_failed-text{
+	
+	color:#FF0000;
+	background-color: rgba(0,0,0,0.3);
+	max-width: 115px;
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	font-style:italic;
+	letter-spacing: 1px;
+	font-size:18px;
+	visibility:hidden;
+	padding: 2px 8px 2px 8px;
+	border-radius: 5px;
+}
+
+#sign-in_forgot-password{
+	
+	float: right;
+	color:#0066CC;
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	font-style:italic;
+	font-weight: bold;
+	letter-spacing: 1px;
+	font-size:1em;
+	cursor: pointer;
+}
+
+#sign-in_forgot-password:hover{
+	
+	float: right;
+	color:#999999;
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration:underline;
+	font-style:italic;
+	font-weight: bold;
+	letter-spacing: 1px;
+	font-size:1em;
+	cursor: pointer;
+}
+
+#sign-in_bottom-nav {
+	
+	clear: both;
+}
+
+#sign-in_register-button{
+
+	float: left;
+	background-image:url("/resources/imgs/register_button-non-high-lighted.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position:center; 
+	cursor: pointer;
+	width: 180px;
+	height: 60px;
+}
+
+#sign-in_register-button:hover{
+
+	float: left;
+	background-image:url("/resources/imgs/register_button-high-lighted.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position:center; 
+	cursor: pointer;
+	width: 180px;
+	height: 60px;
+}
+
+
+
+#sign-in_sign-in-button{
+
+	float: right;
+	background-image:url("/resources/imgs/sign-in_button-non-high-lighted.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position:center; 
+	cursor: pointer;
+	width: 180px;
+	height: 60px;
+}
+
+#sign-in_sign-in-button:hover{
+
+	float: right;
+	background-image:url("/resources/imgs/sign-in_button-high-lighted.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position:center; 
+	cursor: pointer;
+	width: 180px;
+	height: 60px;
+}

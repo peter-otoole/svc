@@ -1,0 +1,167 @@
+<script type="text/javascript" src="/resources/js/drawing.js"></script>
+<script type="text/javascript" src="/resources/js/socket.io.min.js"></script>
+<script type="text/javascript" src="/resources/js/group-session.js"></script>
+
+<div id="control-panel">
+	<div id="shape-selector-container">
+		<div id="shape-selector-accordion">
+			<h3>Lines</h3>
+				<div class="shape-selector-backdrop" >
+					<div class="shape-selector-backdrop">
+						<table class="table-width">
+							<tr>
+								<td class="images-inputs"><img class="shape-img-all" id="shape-pencil" src="/resources/imgs/pencil.png" width="80" height="80" /></td> 
+								<td class="images-inputs"><img class="shape-img-all" id="shape-straightline" src="/resources/imgs/straightline.png" width="80" height="80" /></td>
+							</tr>	
+							<tr class="tr-separator" >
+								<td class="images-inputs"><img class="shape-img-all" id="shape-quadraticcurve" src="/resources/imgs/quadraticcurvedline.png" width="80" height="80" /></td> 
+								<td class="images-inputs"><img class="shape-img-all" id="shape-berziercurved" src="/resources/imgs/beziercurvedline.png" width="80" height="80" /></td>
+							</tr>	
+						</table>
+					</div>
+				</div>
+			<h3>Shapes</h3>
+				<div class="shape-selector-backdrop" >
+					<div class="shape-selector-backdrop">
+						<table class="table-width">
+							<tr>
+								<td class="images-inputs"><img class="shape-img-all" id="shape-circle" src="/resources/imgs/circle.png" width="80" height="80" /></td>
+								<td class="images-inputs"><img class="shape-img-all"  id="shape-rectangle" src="/resources/imgs/rectangle.png" width="80" height="80" /></td>
+							</tr>
+							<tr class="tr-separator" >
+								<td class="images-inputs"><img class="shape-img-all" id="shape-triangle" src="/resources/imgs/triangle.png" width="80" height="80" /></td>
+								<td class="images-inputs"><img class="shape-img-all" id="shape-arrow" src="/resources/imgs/arrow.png" width="80" height="80" /></td>
+							</tr>	
+						</table>
+					</div>
+				</div>
+			<h3>Erazer</h3>
+				<div class="shape-selector-backdrop" >
+					<div class="shape-selector-backdrop">
+						<table class="table-width">
+							<tr>
+								<td class="images-inputs"><img class="shape-img-all" id="shape-serazer" src="/resources/imgs/serazer.png" width="80" height="80" /></td>
+								<td class="images-inputs"><img class="shape-img-all" id="shape-cerazer" src="/resources/imgs/cerazer.png" width="80" height="80" /></td>
+							</tr>	
+						</table>
+					</div>
+				</div>
+			<h3>Text</h3>
+				<div class="shape-selector-backdrop" >
+					<div class="shape-selector-backdrop">
+						<div class="text-selector-backdrop">
+							<table class="table-width">
+								<tr>
+									<td colspan="2" class="images-inputs"><img class="shape-img-all" id="shape-stext" src="/resources/imgs/simpletext.png" width="160" height="80" /></td>
+								</tr>
+								<tr class="tr-separator-text" >
+									<td class="td-text">Font:</td>
+									<td class="td-input">
+										<select class="colour-selector-input-width" id="font-selector">
+											<option value='Comic Sans MS'>Comic Sans</option>
+											<option value='Alex Brush'>Alex Brush</option>
+											<option value='Arial'>Arial</option>
+											<option value='Calibri'>Calibri</option>
+										</select>
+									</td>
+								</tr>	
+								<tr class="tr-separator-text" >
+									<td class="td-text">Text:</td>
+									<td class="td-input"><input id="text-value" name="text-value" type="text" placeholder="Enter text..." value=""  class="colour-selector-input-width"></td>
+								</tr>	
+							</table>
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
+	
+	<div id="colour-selector-container">
+		<div id="colour-selector-accordion">
+			<h3>Colour</h3>
+				<div id="colour-selector-height">
+					<div class="colour-selector-backdrop">
+						<div id="colour-selector">
+							<table class="table-width">
+								<tr>
+									<td class="td-text" >Shape Filled:</td> 
+									<td class="td-input"><input id="color-filled" type="checkbox" name="shape-filled"></td>
+								</tr>	
+								<tr class="tr-separator" >
+									<td class="td-text">Colour:</td> 
+									<td class="td-input"><input id="color-color" type="color" name="color-chooser" value="#000000" class="colour-selector-input-width"></td>
+								</tr>	
+								<tr class="tr-separator" >
+									<td class="td-text">Opacity:</td> 
+									<td class="td-input"><input id="color-opacity" type="range" value="100" name="opacity-chooser" class="colour-selector-input-width"></td>
+								</tr>
+								<tr class="tr-separator" >
+									<td class="td-text">Line Width:</td> 
+									<td class="td-input"><input id="line-width" type="number" value="10" name="line-width" class="colour-selector-input-width"></td>
+								</tr>	
+							</table>
+						</div>
+					</div>
+				</div>
+			<h3>Saving & Options</h3>
+				<div id="options-selector-height">
+					<div class="colour-selector-backdrop">
+						<div id="colour-selector">
+							<table class="table-width">
+								<tr>
+									<td colspan="1" class="td-text" ><div id="edit-layers"><img class="shape-img-all-small-layer" src="/resources/imgs/view-layers.png" width="120" height="30" /></div></td> 
+								</tr>	
+								<tr>
+									<td colspan="1" class="td-text" >Share Publicly:</td> 
+									<td colspan="1" class="td-input"><input id="share-publicly-allowed" type="checkbox" name="share-publicly-allowed" checked></td>
+								</tr>				
+							</table>
+							<table class="table-width">
+								<tr>
+									<td colspan="1" class="images-inputs-small"><div id="save-drawing"><img class="shape-img-all-small" src="/resources/imgs/save.png" width="40" height="40" /></div></td>
+									<td colspan="1" class="images-inputs-small"><div id="clear-canvas"><img class="shape-img-all-small" src="/resources/imgs/clear.png" width="40" height="40" /></div></td>
+								</tr>	
+							</table>
+						</div>	
+					</div>
+				</div>	
+		</div>
+	</div>
+</div>
+<div id="canvas-holder">
+	<canvas id="current-drawing-canvas" width="700" height="700" />
+	<canvas id="phantom-drawing-canvas" width="700" height="700" style="curser: url(/resources/imgs/target-curser.png)" />
+</div>
+
+<div id="messages-place-holder">
+	<div id="messages-container">
+		<div class="messages-header" onclick="openCloseMessages()">
+			<div id="messages-header-text">Messages</div>
+		</div>
+		<div class="messages-separator"></div>
+		<div id="messages-main-view">
+			<div id="messages-content-view">
+			</div>
+		</div>
+		<div class="messages-separator"></div>
+		<div id="messages-input-fields">
+			<input id="group-message-input" name="text-value" type="text" placeholder="Enter message..." value=""  />
+			<button id="group-message-send-button" onclick="sendGroupMessage()" >Send</button>
+		</div>
+	</div>
+</div>
+
+<div class="res">
+	<span id="group-session-session-id"></span>
+	<span id="messages-open-temp-holder"></span>
+	<span id="messages-closed">
+		<div id="messages-closed">
+			<div class="messages-header" onclick="openCloseMessages()">
+				<div id="messages-header-text">Messages</div>
+			</div>
+		</div>
+	</span>
+	
+</div>
+
+

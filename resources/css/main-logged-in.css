@@ -1,0 +1,402 @@
+#main-left {
+	
+	width: 720px;
+	min-height: 720px;
+	background-color: rgba(69,17,170, 1.0);
+	float:left;
+	border-radius: 10px;
+	box-shadow: 0px 0px 20px rgba(33,3,90, 1.0);
+}
+
+@font-face {
+    font-family: "Kaushan Script";
+    src: url(http://www.example.org/mycustomfont.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Alex Brush";
+    src: url(/resources/fonts/AlexBrush-Regular.ttf) format("truetype");
+}
+
+#hidden-load-font{
+	font-family: Alex Brush;
+	visibility:hidden;
+}
+
+
+#main-right {
+
+	width: 260px;
+	min-height: 720px;
+	background-color: rgba(80,102,217,1.0);
+	float: right;
+	border-radius: 10px;
+	box-shadow: 0px 0px 20px rgba(33,3,90, 1.0);
+}
+
+#welcome-message {
+	
+	color: rgba(220,220,220,1.0);
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	letter-spacing: 1px;
+	font-size:2.6em;
+	text-align:center;
+	padding: 10px 10px 10px 10px;
+	width: 240px;
+	margin-top: 10px;
+	cursor: default;
+}
+
+#welcome-message-seperator{
+	
+	width: 240;
+	height: 6px;
+	background-color: rgba(133,5,164,1.0);
+	box-shadow: 0px 0px 30px rgba(70,1,87,0.5);
+	margin: 20px 10px 20px 10px;
+}
+
+.home-buttons {
+
+	color: rgba(220,220,220,1.0);
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	letter-spacing: 1px;
+	font-size:2.6em;
+	text-align:center;
+	padding: 10px 20px 10px 20px;
+	background-color: #770493;
+	box-shadow: 0px 0px 20px rgba(125,4,155,0.6);
+	float: left;
+	width: 180px;
+	height: 60px;
+	border-radius: 10px;
+	cursor: pointer;
+	margin: 20px 20px 20px 20px;
+}
+
+#private-session-dialog {
+	
+	margin: 50px 50px 50px 50px;
+	width: 330px;
+}
+
+.td-dialog-text {
+
+	color: rgba(0,0,0,1.0);
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	letter-spacing: 1px;
+	font-size:1.0em;
+	padding-right: 10px;
+	cursor: default;
+}
+
+#drawing-canvas{
+	background-color: #FFFFFF;
+	margin: 10px 10px 10px 10px;
+	width: 700px;
+	height:700px;
+}
+
+#banner-options-container{
+	margin-top: 13px;
+	float: right;
+	overflow:visible;
+	width: 280px;
+}
+
+#banner-invite-friends-container{
+	margin-top: 13px;
+	float: right;
+	overflow:visible;
+	width: 175px;
+}
+
+#nav-invite-friends-button{
+	color:#FFFFFF;
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	letter-spacing: 1px;
+	font-size:2.1em;
+	text-align:center;
+	cursor: pointer;
+	background-color: rgba(255, 255, 255, 0.2);
+	border-radius: 10px;
+	clear:both;
+	margin-top: 8px;
+	margin-right: 20px;
+	padding: 5px 5px 5px 5px;
+	visibility:hidden;
+}
+
+#banner_updates-button {
+	color:#FFFFFF;
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	letter-spacing: 1px;
+	font-size:2.1em;
+	cursor: pointer;
+	background-color: rgba(255, 255, 255, 0.2);
+	border-radius: 10px;
+	z-index: 1000;
+	margin-right: 40px;
+	margin-top: 8px;
+	float: right;
+	padding: 5px 5px 5px 5px;
+}
+
+#banner_log-out{
+	
+	color:#FFFFFF;
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	letter-spacing: 1px;
+	font-size:2.1em;
+	cursor: pointer;
+	background-color: rgba(255, 255, 255, 0.2);
+	border-radius: 10px;
+	margin-right: 40px;
+	margin-top: 8px;
+	float: right;
+	padding: 5px 5px 5px 5px;
+}
+
+#updates-holder{
+	display:none;
+	position: absolute;
+	z-index:1000;
+}
+
+.updates-place-holder{
+	
+	clear:both;
+	overflow:visible;
+	height:5px;
+	margin-top: 60px;
+	position: absolute;
+	z-index:1000;
+}
+
+.updates-container{
+	
+	width:275px;
+	height:300px;
+	background-color: rgba(255,255,255,1.0);
+	overflow-y:scroll;
+	overflow-x:none;
+	border-style:solid;
+	border-width:2px;
+	border-color:#000000;
+	border-radius:5px;
+	box-shadow: 0px 0px 20px rgba(125,4,155,0.6);
+	position: absolute;
+	z-index:1000;
+}
+
+.updates-main {
+	width:100%;
+	position: absolute;
+	z-index:1000;
+}
+
+.updates-header{
+	width:100%;
+	color: rgba(0,0,0,1.0);
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	letter-spacing: 1px;
+	font-weight:bold;
+	font-size:2.2em;
+	text-align:center;
+	margin: 10px 0px 10px 0px;
+}
+
+.updates-separator{
+
+	width: 100%;
+	height: 3px;
+	background-color: rgba(133,5,164,1.0);
+	box-shadow: 0px 0px 20px rgba(70,1,87,0.5);
+	margin: 10px 0px 10px 0px;
+}
+
+.updates-text{
+	
+	color: rgba(0,0,0,1.0);
+	background-color: rgba(133,5,164,0.3);
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	letter-spacing: 1px;
+	font-size:1.2em;
+	padding: 0px 10px 0px 10px;
+	cursor: pointer;
+}
+
+.updates-text-seen{
+	
+	color: rgba(0,0,0,1.0);
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	letter-spacing: 1px;
+	font-size:1.2em;
+	padding: 0px 10px 0px 10px;
+	cursor: pointer;
+}
+
+.updates-text-seen:hover{
+	
+	color: rgba(0,0,0,1.0);
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	letter-spacing: 1px;
+	font-size:1.2em;
+	padding: 0px 10px 0px 10px;
+	cursor: pointer;
+	background-color: rgba(50,50,150,0.3);
+}
+
+.updates-text-separator{
+	
+	height:10px;
+}
+
+#updates-background-cover{
+	
+	position:fixed;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	visibility:hidden;
+	z-index:100;
+}
+
+#messages-closed{
+	
+	position:fixed;
+	bottom:2px;
+	right:2px;
+	
+	width:250px;
+	height:30px;
+		
+	background-color: rgba(255,255,255,0.8);
+	
+	border-style:solid;
+	border-width:2px;
+	border-color:#000000;
+	border-radius:5px;
+	
+	z-index:1100;
+
+}
+
+#messages-container{
+
+	position:fixed;
+	bottom:2px;
+	right:2px;
+	
+	width:250px;
+	height:300px;
+		
+	background-color: rgba(255,255,255,0.8);
+	
+	border-style:solid;
+	border-width:2px;
+	border-color:#000000;
+	border-radius:5px;
+	
+	z-index:1100;
+}
+
+.messages-header{
+	
+	background-color: rgb(70, 1, 87);
+	width:250px;
+	height:27px;
+	margin: 0px 0px 0px 0px;
+}
+
+#messages-header-text{
+	color: rgba(220,220,220,1.0);
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	letter-spacing: 1px;
+	font-size:2.0em;
+	padding-left: 5px;
+	padding-top: 2px;
+	cursor: pointer;
+	text-align:center;
+}
+
+
+#group-message-send-button{
+	
+	margin: 2px 2px 2px 2px;
+	float:right;
+	height: 25px;
+	width: 70px;
+	font-weight:bold;
+	color:#000000;
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	letter-spacing: 1px;
+	font-size:16px;
+	text-align:center;
+	border-radius: 3px;
+	box-shadow: 0px 0px 3px rgba(70,1,87,0.7);
+	cursor: pointer;
+}
+
+#group-message-input{
+	width: 170px;
+	height: 25px;
+	margin-top: 2px;
+	margin-left: 2px;
+	cursor: text;
+}
+
+#messages-main-view{
+	
+	width: 246px;
+	height: 236px;
+	overflow-y:scroll;
+	overflow-x:none;
+}
+
+#messages-input-fields{
+	background-color: rgba(69,17,170, 1.0);
+	padding-bottom: 5px;
+}
+
+.messages-message-text{
+	
+	width: 200px;
+	margin: 5px 16px 5px 8px;
+	padding: 5px;
+	box-shadow: 0px 0px 2px rgba(70,1,87,0.5);
+	border-radius: 5px;
+	color: rgba(220,220,220,1.0);
+	font-family: Calibri, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	letter-spacing: 0.5px;
+	font-size:1.4em;
+	font-weight:bold;
+	background-color: rgba(69,17,170, 0.65);
+}
+
+.messages-separator{
+
+	width: 100%;
+	height: 3px;
+	background-color: rgba(69,17,170, 0.8);
+	box-shadow: 0px 0px 2px rgba(70,1,87,0.5);
+	margin: 0px 0px 0px 0px;
+}
+
+
+
+

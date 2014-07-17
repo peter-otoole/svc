@@ -1,0 +1,500 @@
+<HTML>
+	<HEAD>
+		<TITLE>
+			Social Visual Communication
+		</TITLE>
+		<link rel="shortcut icon" href="/resources/imgs/favicon.png" />
+		<link rel="icon" type="image/x-icon" href="/resources/imgs/favicon.png">
+		<meta itemprop="image" content="/resources/imgs/favicon.png">
+		<meta content="text/html; charset=utf-8" http-equiv="content-type" />
+		<link href="/resources/css/main-layout.css" type="text/css" rel="stylesheet" />
+		<link href="/resources/css/main-logged-in.css" type="text/css" rel="stylesheet" />
+		<link href="/resources/css/dialog-window.css" type="text/css" rel="stylesheet" />
+		<link href="/resources/css/dialog-window-large.css" type="text/css" rel="stylesheet" />
+		<link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="/resources/js/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="/resources/js/home.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+		<link href="/resources/css/private-drawing.css" type="text/css" rel="stylesheet" />
+	</HEAD>
+	<BODY>
+		<div id="banner">
+			<div id="banner_logo-img"></div>
+			<div id="banner_title">Social Visual Communication</div>
+			<div id="banner-options-container" >
+				<div id="banner_log-out">Log Out</div>
+				<div id="updates-background-cover"></div>
+				<div id="banner_updates-button">Updates</div>
+				<div class="updates-place-holder">
+					<div id="updates-holder" class="updates-container"></div>
+				</div>
+			</div>
+			<div id="banner-invite-friends-container">
+				<div id="nav-invite-friends-button">Invite Friends</div>
+			</div>
+		</div>
+		<div id="main-content"></div>
+		<div class="dialog-window"></div>
+		<div class="res">
+			<span id="dialog-window-extend-friend-request-original-html">
+				<div class="dialog-window-backdrop"></div>
+				<div class="dialog-window-container">
+					<div class="dialog-window-foreground">
+						<div class="dialog-window-top-exit"></div>
+						<div class="dialog-window-header"><p class="dialog-window-header-text">Extending Friend Request</p></div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-main-content">
+							<div class="forgot-password-dialog">
+								<table class="table-dialog-width">
+									<tr>
+										<td class="td-dialog-text" colspan="2" >Please enter your friends email address</td> 
+									</tr>
+									<tr class="tr-f-p-table"></tr>
+									<tr>
+										<td class="td-dialog-text-2" >Friends email address:</td> 
+										<td class="td-dialog-input"><input type="text" class="input-dialog-f-p" name="friend-request-friend-email" id="friend-request-friend-email" placeholder="john.doe@example.com" /></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-footer">
+							<div id="dialog-window-footer-button_container">
+								<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+								<button id="dialog-window-submit-button" class="dialog-window-footer-button">Submit</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</span>
+			<span id="dialog-window-extend-friend-request-success">
+				<div class="dialog-window-backdrop"></div>
+				<div class="dialog-window-container">
+					<div class="dialog-window-foreground">
+						<div class="dialog-window-top-exit"></div>
+						<div class="dialog-window-header"><p class="dialog-window-header-text">Request Sent</p></div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-main-content">
+							<div class="forgot-password-dialog">
+								<table class="table-dialog-width">
+									<tr>
+										<td class="td-dialog-text" colspan="2" >We have sent your request, we will notify you when they accept it.</td> 
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-footer">
+							<div id="dialog-window-footer-button_container">
+								<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</span>
+			<span id="dialog-window-extend-friend-request-failed">
+				<div class="dialog-window-backdrop"></div>
+				<div class="dialog-window-container">
+					<div class="dialog-window-foreground">
+						<div class="dialog-window-top-exit"></div>
+						<div class="dialog-window-header"><p class="dialog-window-header-text">Request Failed</p></div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-main-content">
+							<div class="forgot-password-dialog">
+								<table class="table-dialog-width">
+									<tr>
+										<td class="td-dialog-text" colspan="2" >We apologise, we could not find your friend, they are not registered under that address.</td> 
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-footer">
+							<div id="dialog-window-footer-button_container">
+								<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</span>
+			<span id="dialog-window-message-friend-original-html">
+				<div class="dialog-window-backdrop"></div>
+				<div class="dialog-window-container">
+					<div class="dialog-window-foreground">
+						<div class="dialog-window-top-exit"></div>
+						<div class="dialog-window-header"><p class="dialog-window-header-text">Message a Firend</p></div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-main-content">
+							<div class="forgot-password-dialog">
+								<table class="table-dialog-width">
+									<tr>
+										<td class="td-dialog-text-2" >Friend:</td> 
+										<td class="td-dialog-input">
+											<select class="input-dialog-f-p-long" id="message-to-friend-friend-selection"></select>
+										</td>
+									</tr>
+									<tr class="tr-f-p-table"></tr>
+									<tr>
+										<td colspan="2" class="td-dialog-text-2" >Message:</td> 
+									</tr>
+									<tr>
+										<td colspan="2" class="td-dialog-input"><textarea class="input-dialog-text-area" id="message-to-friend-text-area" name="message-to-friend-text-area" rows="4" cols="50" placeholder="Your message here..."></textarea></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-footer">
+							<div id="dialog-window-footer-button_container">
+								<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+								<button id="dialog-window-submit-button" class="dialog-window-footer-button">Submit</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</span>
+			<span id="dialog-window-message-friend-cannot-get-friends">
+				<div class="dialog-window-backdrop"></div>
+				<div class="dialog-window-container">
+					<div class="dialog-window-foreground">
+						<div class="dialog-window-top-exit"></div>
+						<div class="dialog-window-header"><p class="dialog-window-header-text">Cannot Send Message</p></div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-main-content">
+							<div class="forgot-password-dialog">
+								<table class="table-dialog-width">
+									<tr>
+										<td colspan="2" class="td-dialog-text-2" >We apologise, we could load your friends list.</td> 
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-footer">
+							<div id="dialog-window-footer-button_container">
+								<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</span>
+			<span id="dialog-window-message-friend-success">
+				<div class="dialog-window-backdrop"></div>
+				<div class="dialog-window-container">
+					<div class="dialog-window-foreground">
+						<div class="dialog-window-top-exit"></div>
+						<div class="dialog-window-header"><p class="dialog-window-header-text">Message Sent</p></div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-main-content">
+							<div class="forgot-password-dialog">
+								<table class="table-dialog-width">
+									<tr>
+										<td colspan="2" class="td-dialog-text-2" >Your message was sent successfully.</td> 
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-footer">
+							<div id="dialog-window-footer-button_container">
+								<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</span>
+			<span id="dialog-window-message-friend-failure">
+				<div class="dialog-window-backdrop"></div>
+				<div class="dialog-window-container">
+					<div class="dialog-window-foreground">
+						<div class="dialog-window-top-exit"></div>
+						<div class="dialog-window-header"><p class="dialog-window-header-text">Cannot Send Message</p></div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-main-content">
+							<div class="forgot-password-dialog">
+								<table class="table-dialog-width">
+									<tr>
+										<td colspan="2" class="td-dialog-text-2" >We apologise, we could not send your message.</td> 
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-footer">
+							<div id="dialog-window-footer-button_container">
+								<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</span>
+			<span id="dialog-window-view-message">
+				<div class="dialog-window-backdrop"></div>
+				<div class="dialog-window-container">
+					<div class="dialog-window-foreground">
+						<div class="dialog-window-top-exit"></div>
+						<div class="dialog-window-header"><p class="dialog-window-header-text">Message</p></div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-main-content">
+							<div class="forgot-password-dialog">
+								<table class="table-dialog-width">
+									<tr>
+										<td colspan="2" class="td-dialog-text-2" ><div id="dialog-window-view-message-from-header"></div></td> 
+									</tr>
+									<tr class="tr-f-p-table"></tr>
+									<tr>
+										<td colspan="2" class="td-dialog-text-2" ><div class="dialog-window-view-message-text" id="dialog-window-view-message-text"></div></td> 
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-footer">
+							<div id="dialog-window-footer-button_container">
+								<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</span>
+			<span id="dialog-window-reply-to-friend-request">
+				<div class="dialog-window-backdrop"></div>
+				<div class="dialog-window-container">
+					<div class="dialog-window-foreground">
+						<div class="dialog-window-top-exit"></div>
+						<div class="dialog-window-header"><p class="dialog-window-header-text">Friend Request</p></div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-main-content">
+							<div class="forgot-password-dialog">
+								<table class="table-dialog-width">
+									<tr>
+										<td colspan="2" class="td-dialog-text-2" ><div id="dialog-window-friend-request-reply-from-header"></div></td> 
+									</tr>
+									<tr class="tr-f-p-table"></tr>
+									<tr>
+										<td colspan="2" class="td-dialog-text-2" ><div id="dialog-window-friend-request-reply-text"></div></td> 
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-footer">
+							<div id="dialog-window-footer-button_container">
+								<button id="dialog-window-accept-button" class="dialog-window-footer-button">Accept</button>
+								<button id="dialog-window-decline-button" class="dialog-window-footer-button">Decline</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</span>
+			<span id="dialog-window-view-my-drawings">
+				<div class="dialog-window-backdrop-large"></div>
+				<div class="dialog-window-container-large">
+					<div class="dialog-window-foreground-large">
+						<div class="dialog-window-top-exit-large"></div>
+						<div class="dialog-window-header-large"><p class="dialog-window-header-text-large">View My Drawings</p></div>
+						<div class="dialog-window-full-separator-large"></div>
+						<div class="dialog-window-main-content-large">
+							<div class="view-my-drawings-buttons-container" >
+								<div id="view-my-drawings-share-button" class="view-my-drawings-buttons">Share</div>
+								<div class="view-my-drawings-buttons-separator">|</div>
+								<div id="view-my-drawings-edit-button" class="view-my-drawings-buttons">Edit</div>
+								<div class="view-my-drawings-buttons-separator">|</div>
+								<div id="view-my-drawings-delete-button" class="view-my-drawings-buttons">Delete</div>
+							</div>
+							<div class="view-my-drawings-drawing-nav-container">
+								<div class="message-dialog-large-left" ></div> 
+								<div class="message-dialog-large-middle">
+									<div id="dialog-window-canvas-container">
+										<canvas id="view-drawings-canvas" width="700" height="700" />
+									</div>
+								</div>
+								<div class="message-dialog-large-right"></div> 
+							</div>
+						</div>
+						<div class="dialog-window-full-separator-large"></div>
+						<div class="dialog-window-footer-large"></div>
+					</div>
+				</div>
+			</span>
+			<span id="dialog-window-view-my-drawings-no-drawings">
+				<div class="dialog-window-backdrop"></div>
+				<div class="dialog-window-container">
+					<div class="dialog-window-foreground">
+						<div class="dialog-window-top-exit"></div>
+						<div class="dialog-window-header"><p class="dialog-window-header-text">No Drawings</p></div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-main-content">
+							<div class="forgot-password-dialog">
+								<table class="table-dialog-width">
+									<tr>
+										<td colspan="2" class="td-dialog-text-2" >You have no drawings saved.</td> 
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-footer">
+							<div id="dialog-window-footer-button_container">
+								<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</span>
+			<span id="dialog-window-edit-layers">
+				<div class="dialog-window-backdrop-large"></div>
+				<div class="dialog-window-container-large">
+					<div class="dialog-window-foreground-large">
+						<div class="dialog-window-top-exit-large"></div>
+						<div class="dialog-window-header-large"><p class="dialog-window-header-text-large">Edit Layers</p></div>
+						<div class="dialog-window-full-separator-large"></div>
+						<div class="dialog-window-main-content-large">
+							<div id="edit-layers-main-shape-container" class="edit-layers-main-container">
+								<div class="dialog-window-full-separator-large"></div>
+							</div>
+						</div>
+						<div class="dialog-window-full-separator-large"></div>
+						<div class="dialog-window-footer-large">
+							<div id="dialog-window-footer-button_container">
+								<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</span>
+			<span id="dialog-window-group-session-setup">
+				<div class="dialog-window-backdrop"></div>
+				<div class="dialog-window-container">
+					<div class="dialog-window-foreground">
+						<div class="dialog-window-top-exit"></div>
+						<div class="dialog-window-header"><p class="dialog-window-header-text">Open Group Session</p></div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-main-content">
+							<div class="start-group-session-dialog">
+								<table class="table-dialog-width">
+									<tr>
+										<td class="td-dialog-text-2" >Invite a Friend:</td> 
+										<td class="td-dialog-input">
+											<select class="input-dialog-f-p-long" id="group-session-friend-selection"></select>
+										</td>
+									</tr>
+									<tr class="tr-f-p-table"></tr>
+								</table>
+							</div>
+						</div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-footer">
+							<div id="dialog-window-footer-button_container">
+								<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+								<button id="dialog-window-submit-button" class="dialog-window-footer-button">Submit</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</span>
+			<span id="dialog-window-group-session-failed">
+				<div class="dialog-window-backdrop"></div>
+				<div class="dialog-window-container">
+					<div class="dialog-window-foreground">
+						<div class="dialog-window-top-exit"></div>
+						<div class="dialog-window-header"><p class="dialog-window-header-text">Open Group Session</p></div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-main-content">
+							<div class="start-group-session-dialog">
+								<table class="table-dialog-width">
+									<tr>
+										<td class="td-dialog-text-2" >We apologise, something has gone wrong. Please try again.</td> 
+									</tr>							
+								</table>
+							</div>
+						</div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-footer">
+							<div id="dialog-window-footer-button_container">
+								<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</span>
+			<span id="dialog-window-join-group-session-original">
+				<div class="dialog-window-backdrop"></div>
+				<div class="dialog-window-container">
+					<div class="dialog-window-foreground">
+						<div class="dialog-window-top-exit"></div>
+						<div class="dialog-window-header"><p class="dialog-window-header-text">Join Group Session</p></div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-main-content">
+							<div class="forgot-password-dialog">
+								<table class="table-dialog-width">
+									<tr>
+										<td colspan="2" class="td-dialog-text-2" ><div id="dialog-window-group-invite-from-header"></div></td> 
+									</tr>
+									<tr class="tr-f-p-table"></tr>
+									<tr>
+										<td colspan="2" class="td-dialog-text-2" ><div id="dialog-window-group-invite-message"></div></td> 
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-footer">
+							<div id="dialog-window-footer-button_container">
+								<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+								<button id="dialog-window-submit-button" class="dialog-window-footer-button">Join</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</span>
+			<span id="dialog-window-join-group-session-failed">
+				<div class="dialog-window-backdrop"></div>
+				<div class="dialog-window-container">
+					<div class="dialog-window-foreground">
+						<div class="dialog-window-top-exit"></div>
+						<div class="dialog-window-header"><p class="dialog-window-header-text">Join Group Session</p></div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-main-content">
+							<div class="start-group-session-dialog">
+								<table class="table-dialog-width">
+									<tr>
+										<td class="td-dialog-text-2" >Sorry, it appears this session is over.</td> 
+									</tr>							
+								</table>
+							</div>
+						</div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-footer">
+							<div id="dialog-window-footer-button_container">
+								<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</span>
+			<span id="dialog-window-invite-more-friends">
+				<div class="dialog-window-backdrop"></div>
+				<div class="dialog-window-container">
+					<div class="dialog-window-foreground">
+						<div class="dialog-window-top-exit"></div>
+						<div class="dialog-window-header"><p class="dialog-window-header-text-large">Invite Friends</p></div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-main-content">
+							<div id="invite-friends-main-container" class="invite-friends-main-container"></div>
+						</div>
+						<div class="dialog-window-full-separator"></div>
+						<div class="dialog-window-footer">
+							<div id="dialog-window-footer-button_container">
+								<button id="dialog-window-close-button" class="dialog-window-footer-button">Close</button>
+								<button id="dialog-window-submit-button" class="dialog-window-footer-button">Invite</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</span>
+			<span id="res-number-of-updates"></span>
+		</div>
+		<div id="hidden-load-font">some text</div>
+	</BODY>
+</HTML>
