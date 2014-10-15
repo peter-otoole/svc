@@ -9,4 +9,69 @@
  * 
  * api.js - Modules handles all API requests
  * 
+ * Supports: 
+ * 
+ * [0] - GET "/" - Load index page
+ * [1] - GET "/resources/:dynfolder/:dynfile" - Generically loads resources from main project 
  */
+
+/*
+ * Initialise packages, require necessary modules and scripts.
+ */
+var express = require( "express" );
+var utils = require( "./utils.js" );
+var codes = reuqire( "./codes.js" );
+var common = require( "./common.js" );
+var accountManage = require( "./accountManagement.js" );
+var graphicManage = require( "./graphicManagement.js" );
+var app = express( );
+
+// Root -> loads index page
+app.get( "/", function( request, response ) {
+
+	if( request.session.authorized ){
+
+		findUserBySession( request.sessionID, function( err, res ) {
+
+			if( err || !( res.rowcount === 1 ) ){
+
+				response.render( "../base/index.html", {
+				    email: "",
+				    key: "",
+				    resValDialog: ""
+				} );
+				request.session.destroy( );
+			}else{
+
+				response.sendfile( "./views/base/home.html" );
+			}
+		} );
+	}else{
+
+		response.render( "../base/index.html", {
+		    email: "",
+		    key: "",
+		    resValDialog: ""
+		} );
+	}
+} );
+
+// Resources -> resolves the gives resource
+app.get( "/resources/:dynfolder/:dynfile", function( request, response ) {
+
+	var folder = request.params.dynfolder, file = request.params.dynfile;
+
+	console.log( "Resoruces requested @ /resources/" + folder + "/" + file );
+
+	if( folder === "imgs" ){
+		response.setHeader( "Content-Type", "image/png" );
+	}else if( folder === "css" ){
+		response.setHeader( "Content-Type", "text/css" );
+	}else if( folder === "js" ){
+		response.setHeader( "Content-Type", "text/javascript" );
+	}
+
+	response.sendfile( "./resources/" + folder + "/" + file );
+} );
+
+app.listen( common.HTTP_PORT );
