@@ -14,7 +14,7 @@
  */
 "use strict"
 
-const constants = require( "./common.js" )
+const constants = require( "./constants.js" )
 const dataStore = require( "./dataStorage.js" )
 const express   = require( "express" )
 const async     = require( "asyc" );

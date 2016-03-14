@@ -12,7 +12,7 @@
  */
 "use strict"
 
-const constants     = require( "./common.js" )
+const constants     = require( "./constants.js" )
 const bunyan        = require( "bunyan" )
 const uuid          = require( "node-uuid" )
 const is            = require( "is" )

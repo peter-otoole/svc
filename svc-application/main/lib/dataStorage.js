@@ -10,7 +10,7 @@
  */
 "use strict"
 
-const common           = require( "./common.js" );
+const common           = require( "./constants.js" );
 const sql              = require( "mssql" );
 const connectionConfig = {
 	user:     common.DATA_BASE_USER,

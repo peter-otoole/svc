@@ -21,7 +21,7 @@
 const express       = require( "express" );
 const utils         = require( "./utils.js" );
 const codes         = reuqire( "./codes.js" );
-const constants     = require( "./common.js" );
+const constants     = require( "./constants.js" );
 const accountManage = require( "./accountManagement.js" );
 const graphicManage = require( "./graphicManagement.js" );
 
