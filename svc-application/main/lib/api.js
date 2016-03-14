@@ -6,12 +6,11 @@
  * @version 0.0.1
  * @since 10/14/2014
  *
- *
  * api.js - Modules handles all API requests
  *
  * Supports:
  * [0] - GET "/" - Load index page
- * [1] - GET "/resources/:dynfolder/:dynfile" - Generically loads resources from main project
+ * [1] - GET "/resources/:folder/:file" - Generically loads resources from main project
  */
 "use strict"
 
@@ -25,10 +24,42 @@ const codes         = reuqire( "./codes.js" );
 const constants     = require( "./common.js" );
 const accountManage = require( "./accountManagement.js" );
 const graphicManage = require( "./graphicManagement.js" );
-var app             = express();
+
+
+/*
+ Sets up api listening
+ */
+function initialise( callback ) {
+
+	var app = express();
+
+	// Add a logger instance to the request
+	app.use( attachLogger );
+
+	app.get( "/", routeHome );
+	app.get( "/resources/:folder/:file", manageResources );
+
+	app.listen( constants.HTTP_PORT );
+	app.listen( constants.HTTPS_PORT );
+
+	callback()
+}
+
+// Expose the initialise function
+module.exports = initialise
+
+/*
+ Adds an instance of the bunyan logger to the request to be used throughout the application
+ */
+function attachLogger( request, response, next ) {
+
+	request.log = utils.logger.child( { req_id: utils.generateUUID () }, true )
+
+	next()
+}
 
 // Root -> loads index page
-app.get( "/", function ( request, response ) {
+function routeHome( request, response ) {
 
 	if ( request.session.authorized ) {
 
@@ -55,14 +86,16 @@ app.get( "/", function ( request, response ) {
 			resValDialog: ""
 		} );
 	}
-} );
+}
 
 // Resources -> resolves the gives resource
-app.get( "/resources/:dynfolder/:dynfile", function ( request, response ) {
+function manageResources( request, response ) {
 
-	var folder = request.params.dynfolder, file = request.params.dynfile;
+	var log = request.log;
 
-	console.log( "Resoruces requested @ /resources/" + folder + "/" + file );
+	var folder = request.params.folder, file = request.params.file;
+
+	log.info( { folder: folder, file: file }, "Resource requested @ '/resources/" + folder + "/" + file + "'" );
 
 	if ( folder === "imgs" ) {
 		response.setHeader( "Content-Type", "image/png" );
@@ -72,7 +105,5 @@ app.get( "/resources/:dynfolder/:dynfile", function ( request, response ) {
 		response.setHeader( "Content-Type", "text/javascript" );
 	}
 
-	response.sendfile( "./resources/" + folder + "/" + file );
-} );
-
-app.listen( common.HTTP_PORT );
+	response.sendFile( "/resources/" + folder + "/" + file );
+}

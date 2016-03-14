@@ -36,6 +36,4 @@ database.connect = function connect( callback ) {
 	sql.connect( connectionConfig ).then( callback ).catch( callback );
 }
 
-
-
 module.exports = database;
