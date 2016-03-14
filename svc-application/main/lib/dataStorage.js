@@ -1,39 +1,41 @@
 /**
- * Social Visual Communication, Copyright © Peter O'Toole All Rights Reserved
- * 
+ * Social Visual Communication, Copyright ï¿½ Peter O'Toole All Rights Reserved
+ *
  * @author Peter O'Toole peterjotoole@outlook.com
- * 
+ *
  * @version 0.0.1
  * @since 10/14/2014
- * 
- * 
+ *
  * dataStorage.js - Module to handle database connection and data base management
- * 
- * 
  */
+"use strict"
 
-var MSSQL;
-var common;
+const common           = require( "./common.js" );
+const sql              = require( "mssql" );
+const connectionConfig = {
+	user:     common.DATA_BASE_USER,
+	password: common.DATA_BASE_PASSWORD,
+	server:   common.DATA_BASE_SERVER,
+	database: common.DATA_BASE,
+	pool:     {
+		max:               common.DATA_BASE_MAX,
+		min:               common.DATA_BASE_MIN,
+		idleTimeoutMillis: common.DATA_BASE_IDEL
+	}
+}
 
-var init = function( ) {
+var database = {}
 
-	common = require( "./common.js" );
-	var MSSQLConnector = require( "node-mssql-connector" );
+/**
+ * requests connection to database, gets an error if connection fails
+ *
+ * @param {function} callback
+ */
+database.connect = function connect( callback ) {
 
-	var MSSQL = new MSSQLConnector( {
-	    settings: {
-	        max: common.DATA_BASE_MAX,
-	        min: common.DATA_BASE_MIN,
-	        idleTimeoutMillis: common.DATA_BASE_IDEL
-	    },
-	    connection: {
-	        userName: common.DATA_BASE_USER,
-	        password: common.DATA_BASE_PASSWORD,
-	        server: common.DATA_BASE_SERVER,
-	        options: {
-		        database: common.DATA_BASE
-	        }
-	    }
-	} );
+	sql.connect( connectionConfig ).then( callback ).catch( callback );
+}
 
-};
+
+
+module.exports = database;

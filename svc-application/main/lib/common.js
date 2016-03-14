@@ -6,7 +6,6 @@
  * @version 0.0.1
  * @since 10/14/2014
  *
- *
  * common.js - Contains constants for the application
  */
 "use strict"
@@ -27,6 +26,8 @@ exports = {
 	MAILER_PORT:            465,
 	MAILER_PROTOCOL:        "SMTP",
 	MAILER_USERNAME:        "svc.no.reply@gmail.com",
-	MAILER_PASSWORD:        "willowstick",
-	EXPRESS_SESSION_SECRET: ""
+	MAILER_PASSWORD:        "NO password for you",
+	EXPRESS_SESSION_SECRET: "",
+	HASH_ALGORITHM:         "sha256",
+	SECRET:                 "secret to be updated!"
 }
