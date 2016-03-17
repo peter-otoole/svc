@@ -40,6 +40,10 @@ function register( callback ) {
 
 	// Add a logger instance to the request
 	app.use( attachLogger )
+	app.use( traceRequests )
+
+	app.set( "views", constants.root_dir + "\\views\\base" )
+	app.set( "view engine", "jade" )
 
 	// Create additional routes
 	var accountRoutes = accountManage.retrieveRoutes()
@@ -52,14 +56,15 @@ function register( callback ) {
 
 	// Set app to listen on ports
 	log.info(
-			{ http_port:    constants.runtime_conf.server.http_port,
+			{
+				http_port:  constants.runtime_conf.server.http_port,
 				https_port: constants.runtime_conf.server.https_port
 			},
 			"Listening on ports" )
 	app.listen( constants.runtime_conf.server.http_port )
 	app.listen( constants.runtime_conf.server.https_port )
 
-	callback();
+	callback()
 }
 
 // Expose the initialise function
@@ -85,34 +90,70 @@ function attachLogger( request, response, next ) {
 	)
 }
 
+/*
+ Logs all incoming requests and the respons sent
+ */
+function traceRequests( request, response, next ) {
+
+	var log       = utils.getSessionLogger( __filename, traceRequests )
+	var startTime = new Date();
+
+
+	log.info( {
+		          request_body:   request.body,
+		          request_params: request.params,
+		          request_path:   request.path
+	          }, "Request received" )
+
+	response.on( 'close', function () {
+		console.log( 'close' )
+	} )
+
+	response.on( 'end', function () {
+		console.log( 'end' )
+	} )
+
+	response.on( 'header', function () {
+		console.log( 'header' )
+		console.log( response.statusCode )
+	} )
+
+	response.tSend = function ( status, value ) {
+
+		log.info ( {
+			           response_status:  status,
+			           response_value:   value,
+			           request_duration: (new Date() - startTime) / 1000
+		           }, "Sending response" )
+
+		response.send( status, value )
+	}
+
+	response.tSendFile = function ( fileName ) {
+
+		log.info ( {
+			           response_file:    fileName,
+			           request_duration: (new Date() - startTime) / 1000
+		           }, "Sending response" )
+
+		response.sendFile( fileName )
+	}
+
+	next();
+}
+
 // Root -> loads index page
 function routeHome( request, response ) {
 
-	if ( request.session.authorized ) {
+	var log = utils.getSessionLogger( __filename, routeHome )
 
-		findUserBySession( request.sessionID, function ( err, res ) {
+	log.debug ( "Root file requested" )
 
-			if ( err || !( res.rowcount === 1 ) ) {
-
-				response.render( "../base/index.html", {
-					email:        "",
-					key:          "",
-					resValDialog: ""
-				} );
-				request.session.destroy();
-			} else {
-
-				response.sendfile( "./views/base/home.html" );
-			}
-		} );
-	} else {
-
-		response.render( "../base/index.html", {
-			email:        "",
-			key:          "",
-			resValDialog: ""
-		} );
-	}
+	response.render( "index", {
+		email:        "",
+		key:          "",
+		resValDialog: ""
+	} );
 }
 
 // Resources -> resolves the gives resource
@@ -122,7 +163,7 @@ function manageResources( request, response ) {
 
 	var folder = request.params.folder, file = request.params.file;
 
-	log.debug( { folder: folder, file: file }, "Resource requested @ '/resources/" + folder + "/" + file + "'" );
+	log.debug( { folder: folder, file: file }, "Resource requested" );
 
 	if ( folder === "imgs" ) {
 		response.setHeader( "Content-Type", "image/png" );
@@ -132,5 +173,7 @@ function manageResources( request, response ) {
 		response.setHeader( "Content-Type", "text/javascript" );
 	}
 
-	response.sendFile( constants.root_dir + "/resources/" + folder + "/" + file );
+	log.trace( "Sending file" );
+
+	response.tSendFile( constants.root_dir + "/resources/" + folder + "/" + file );
 }

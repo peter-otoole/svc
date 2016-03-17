@@ -44,12 +44,12 @@ cls.getNamespace( constants.namespace ).run ( function () {
 
 		if ( error ) {
 
-			logger.fatal( { error }, "Failed to start application due to error" )
+			log.fatal( { error }, "Failed to start application due to error" )
 			process.exit( 1 )
 		}
 		else {
 
-			logger.info( constants.start_complete_art )
+			log.info( constants.start_complete_art )
 		}
 	} )
 } )

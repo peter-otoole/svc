@@ -74,16 +74,17 @@ utils.getSessionLogger = function getSessionLogger( fileName, functionName ) {
 	// Attempt to get the logger off the stack namespace || get a new one
 	try {
 
-		logger = cls.getNamespace( contains.namespace ).get ( "logger" )
+		logger = cls.getNamespace( constants.namespace ).get ( "logger" )
 
 		if ( !logger || !utils.is.function( logger.child ) ) {
 
-			logger = utils.getLogger()
+			throw new Error( "Logger is not a valid bunyan instance" )
 		}
 
 	} catch ( error ) {
 
 		logger = utils.getLogger()
+		logger.error ( error, "Failed to get an error off the stack, using a new one" )
 	}
 
 	// Return a child instance of the logger based on the origin
