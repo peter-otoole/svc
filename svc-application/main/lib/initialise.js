@@ -17,7 +17,7 @@
 const constants = require( "./constants.js" )
 const dataStore = require( "./dataStorage.js" )
 const express   = require( "express" )
-const async     = require( "asyc" );
+const async     = require( "async" );
 const api       = require( "./api.js" )
 const utils     = require( "./utils.js" )
 
@@ -30,14 +30,13 @@ function initialise( callback ) {
 	async.waterfall(
 			[
 				dataStore.connect,
-				api
+				api.register
 			],
 			function ( error ) {
 
 				if ( error ) {
 
 					log.error( { error }, "Failed to start SVC server" )
-					process.exit( 1 );
 				} else {
 
 					log.info( "Server started without issue" )

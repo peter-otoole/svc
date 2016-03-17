@@ -14,39 +14,43 @@
  */
 "use strict"
 
-
-/*
- Initialise packages, require necessary modules and scripts.
- */
-const express       = require( "express" );
-const utils         = require( "./utils.js" );
-const codes         = reuqire( "./codes.js" );
-const constants     = require( "./constants.js" );
-const accountManage = require( "./accountManagement.js" );
-const graphicManage = require( "./graphicManagement.js" );
-
+const express       = require( "express" )
+const utils         = require( "./utils.js" )
+const codes         = require( "./codes.js" )
+const constants     = require( "./constants.js" )
+const accountManage = require( "./accountManagement.js" )
+const graphicManage = require( "./graphicManagement.js" )
 
 /*
  Sets up api listening
  */
-function initialise( callback ) {
+function register( callback ) {
 
-	var app = express();
+	var app    = express()
+	var router = express.Router()
+
+	// Create base routes
+	router.get( "/", routeHome )
+	router.get( "/resources/:folder/:file", manageResources )
 
 	// Add a logger instance to the request
-	app.use( attachLogger );
+	app.use( attachLogger )
 
-	app.get( "/", routeHome );
-	app.get( "/resources/:folder/:file", manageResources );
+	// Create additional routes
+	var accountRoutes = accountManage.retrieveRoutes()
+	var graphicRoutes = graphicManage.retrieveRoutes()
 
-	app.listen( constants.HTTP_PORT );
-	app.listen( constants.HTTPS_PORT );
+	// Add/Register routes
+	app.use( "/api/", accountRoutes )
+	app.use( "/graphic/", graphicRoutes )
+	app.use( router );
 
-	callback()
+	// Set app to listen on ports
+	app.listen( constants.runtime_conf.server.http_port, callback )
 }
 
 // Expose the initialise function
-module.exports = initialise
+module.exports.register = register
 
 /*
  Adds an instance of the bunyan logger to the request to be used throughout the application
@@ -105,5 +109,5 @@ function manageResources( request, response ) {
 		response.setHeader( "Content-Type", "text/javascript" );
 	}
 
-	response.sendFile( "/resources/" + folder + "/" + file );
+	response.sendFile( constants.root_dir + "/resources/" + folder + "/" + file );
 }

@@ -10,19 +10,17 @@
  */
 "use strict"
 
-const common           = require( "./constants.js" );
-const sql              = require( "mssql" );
-const connectionConfig = {
-	user:     common.DATA_BASE_USER,
-	password: common.DATA_BASE_PASSWORD,
-	server:   common.DATA_BASE_SERVER,
-	database: common.DATA_BASE,
-	pool:     {
-		max:               common.DATA_BASE_MAX,
-		min:               common.DATA_BASE_MIN,
-		idleTimeoutMillis: common.DATA_BASE_IDEL
-	}
+const constants      = require( "./constants.js" );
+const mysql          = require( 'mysql' );
+const connectionConf = {
+	host:     constants.runtime_conf.database.host,
+	port:     constants.runtime_conf.database.port,
+	user:     constants.runtime_conf.database.user,
+	password: constants.runtime_conf.database.password,
+	database: constants.runtime_conf.database.name
 }
+
+var connection = mysql.createConnection( connectionConf );
 
 var database = {}
 
@@ -33,7 +31,15 @@ var database = {}
  */
 database.connect = function connect( callback ) {
 
-	sql.connect( connectionConfig ).then( callback ).catch( callback );
+	console.log( "attempting to make a database connection" )
+
+	connection.connect( function ( error ) {
+
+		console.log( "attempted connection; error -", error )
+
+		callback( error )
+
+	} );
 }
 
 module.exports = database;

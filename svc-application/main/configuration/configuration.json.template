@@ -1,0 +1,27 @@
+{
+	"server" : {
+		"host" : "127.0.0.1",
+		"https_port" : "443",
+		"http_port" : "80",
+		"socket_io_port" : "10001"
+	},
+	"database" : {
+		"host" : "",
+		"port" : "3306",
+		"name" : "",
+		"user" : "",
+		"password" : ""
+	},
+	"email" : {
+		"protocol" : "SMTP",
+		"port" : "465",
+		"host" : "",
+		"user" : "",
+		"password" : ""
+	},
+	"logs" : {
+		"host" : "",
+		"port" : ""
+	},
+	"app_secret" : ""
+}

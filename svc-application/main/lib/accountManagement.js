@@ -8,3 +8,24 @@
  *
  * accountManagement.js - Modules contains all business logic for account management. User registration, management and removal
  */
+"use strict";
+
+const express = require( "express" )
+
+function retrieveRoutes() {
+
+	var router = express.Router()
+
+	router.get ( "/placeholder", placeholder )
+
+	return router
+}
+
+
+module.exports.retrieveRoutes = retrieveRoutes
+
+
+function placeholder( request, response ) {
+
+	response.status( 200 ).send( "Stubbed API" )
+}
