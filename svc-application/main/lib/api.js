@@ -15,6 +15,7 @@
 "use strict"
 
 const express       = require( "express" )
+const cls           = require( "continuation-local-storage" )
 const utils         = require( "./utils.js" )
 const codes         = require( "./codes.js" )
 const constants     = require( "./constants.js" )
@@ -25,6 +26,10 @@ const graphicManage = require( "./graphicManagement.js" )
  Sets up api listening
  */
 function register( callback ) {
+
+	var log = utils.getSessionLogger( __filename, register )
+
+	log.info( "Registering middleware" )
 
 	var app    = express()
 	var router = express.Router()
@@ -46,7 +51,15 @@ function register( callback ) {
 	app.use( router );
 
 	// Set app to listen on ports
-	app.listen( constants.runtime_conf.server.http_port, callback )
+	log.info(
+			{ http_port:    constants.runtime_conf.server.http_port,
+				https_port: constants.runtime_conf.server.https_port
+			},
+			"Listening on ports" )
+	app.listen( constants.runtime_conf.server.http_port )
+	app.listen( constants.runtime_conf.server.https_port )
+
+	callback();
 }
 
 // Expose the initialise function
@@ -57,9 +70,19 @@ module.exports.register = register
  */
 function attachLogger( request, response, next ) {
 
-	request.log = utils.logger.child( { req_id: utils.generateUUID () }, true )
+	var logger = utils.getLogger();
 
-	next()
+	// Add all sub function calls to the namespace
+	cls.getNamespace( constants.namespace ).run (
+			function () {
+
+				// look up the session and attach the logger
+				var session = cls.getNamespace( constants.namespace );
+				session.set ( "logger", logger );
+
+				next()
+			}
+	)
 }
 
 // Root -> loads index page
@@ -95,11 +118,11 @@ function routeHome( request, response ) {
 // Resources -> resolves the gives resource
 function manageResources( request, response ) {
 
-	var log = request.log;
+	var log = utils.getSessionLogger( __filename, manageResources )
 
 	var folder = request.params.folder, file = request.params.file;
 
-	log.info( { folder: folder, file: file }, "Resource requested @ '/resources/" + folder + "/" + file + "'" );
+	log.debug( { folder: folder, file: file }, "Resource requested @ '/resources/" + folder + "/" + file + "'" );
 
 	if ( folder === "imgs" ) {
 		response.setHeader( "Content-Type", "image/png" );

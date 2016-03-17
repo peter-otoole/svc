@@ -12,36 +12,44 @@
  */
 "use strict"
 
-const initialise = require( "./lib/initialise.js" )
+var constants      = require( "./lib/constants" )
+constants.root_dir = __dirname
+const utils        = require( "./lib/utils" );
+const cls          = require( "continuation-local-storage" )
+var logger         = utils.getLogger();
+var log            = logger.child ( { origin: "app.startup" } )
 
-// Load runtime configuration and merge with constants
-var constants              = require( "./lib/constants.js" )
-const runtimeConfiguration = require( "./configuration/configuration.json" )
-constants.runtime_conf     = runtimeConfiguration
-constants.root_dir         = __dirname
+const initialise = require( "./lib/initialise" )
 
-
-// Printing application startup message
-var startUpArt = "\n\n******************************************************************************\n\n"
-	+ "    Starting Social Visual Communication application \n\n"
-	+ "******************************************************************************\n"
-console.log( startUpArt )
+// Create name
+cls.createNamespace( constants.namespace )
 
 
-// Calling the initialise startup message
-initialise( function ( error ) {
+// Log startup
+log.info ( constants.start_art );
 
-	if ( error ) {
 
-		console.error( "\n\nFailed to start application due to error -", error )
-		process.exit( 1 )
-	}
-	else {
 
-		var startUpCompleteArt = "\n\n******************************************************************************\n\n"
-			+ "    Application successfully started. \n\n"
-			+ "******************************************************************************\n"
+// Calling the initialise startup within the cls call stack
+cls.getNamespace( constants.namespace ).run ( function () {
 
-		console.log( startUpCompleteArt )
-	}
+
+	// Attach logger to startup sequence
+	var session = cls.getNamespace( constants.namespace )
+	session.set( "logger", logger );
+
+
+	// Run the application startup
+	initialise( function ( error ) {
+
+		if ( error ) {
+
+			logger.fatal( { error }, "Failed to start application due to error" )
+			process.exit( 1 )
+		}
+		else {
+
+			logger.info( constants.start_complete_art )
+		}
+	} )
 } )

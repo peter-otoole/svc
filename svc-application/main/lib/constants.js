@@ -11,8 +11,17 @@
 "use strict"
 
 module.exports = {
-	MAILER_FROM:    "no-reply@svc.com",
-	HASH_ALGORITHM: "sha256",
-	runtime_conf:   {},
-	root_dir:       ""
+	MAILER_FROM:           "no-reply@svc.com",
+	HASH_ALGORITHM:        "sha256",
+	root_dir:              "",
+	namespace:             "session",
+	unknown_file_name:     "unknown",
+	unknown_function_name: "unknown",
+	runtime_conf:          require( "../configuration/configuration" ),
+	start_art:             "\n\n******************************************************************************\n\n"
+	                       + "    Starting Social Visual Communication application \n\n"
+	                       + "******************************************************************************\n",
+	start_complete_art:    "\n\n******************************************************************************\n\n"
+	                       + "    Application successfully started. \n\n"
+	                       + "******************************************************************************\n"
 }

@@ -11,6 +11,7 @@
 "use strict"
 
 const constants      = require( "./constants.js" );
+const utils          = require( "./utils.js" )
 const mysql          = require( 'mysql' );
 const connectionConf = {
 	host:     constants.runtime_conf.database.host,
@@ -31,15 +32,10 @@ var database = {}
  */
 database.connect = function connect( callback ) {
 
-	console.log( "attempting to make a database connection" )
+	var log = utils.getSessionLogger( __filename, connect )
 
-	connection.connect( function ( error ) {
-
-		console.log( "attempted connection; error -", error )
-
-		callback( error )
-
-	} );
+	log.info( connectionConf, "Attempting to connect to the database" )
+	connection.connect( callback );
 }
 
 module.exports = database;

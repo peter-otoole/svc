@@ -21,29 +21,32 @@ const async     = require( "async" );
 const api       = require( "./api.js" )
 const utils     = require( "./utils.js" )
 
-var log = utils.logger.child( { req_id: utils.generateUUID () }, true )
-
 function initialise( callback ) {
+
+	var log = utils.getSessionLogger( __filename, initialise )
 
 	log.info ( "Starting SVC server." )
 
 	async.waterfall(
 			[
-				dataStore.connect,
-				api.register
-			],
-			function ( error ) {
+				function ( callback ) {
 
-				if ( error ) {
+					dataStore.connect ( function ( error ) {
 
-					log.error( { error }, "Failed to start SVC server" )
-				} else {
+						callback( error )
 
-					log.info( "Server started without issue" )
-				}
+					} )
+				},
+				function ( callback ) {
 
-				callback( error )
+					api.register ( function ( error ) {
+
+						callback( error )
+
+					} )
 			}
+			],
+			callback
 	);
 }
 
