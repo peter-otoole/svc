@@ -33,9 +33,20 @@ utils.getLogger = function getLogger() {
 
 	return bunyan.createLogger(
 		{
-			name:     "SVC",
-			stream:   process.stdout,
-			level:    "trace",
+			name:     constants.log_app_name,
+			streams:  [
+				{
+					level:  constants.log_console_level,
+					stream: process.stdout
+				},
+				{
+					type:   constants.log_rotation,
+					level:  constants.log_file_level,
+					path:   constants.root_dir + constants.session_log_file,
+					period: constants.log_rotation_scheme,
+					count:  constants.log_files_kept
+				}
+			],
 			trace_id: utils.generateUUID()
 		}
 	)
@@ -110,7 +121,21 @@ utils.is = is
  *
  * @returns {boolean} either a valid email address or false.
  */
-utils.validateEmail = emailValidate.validate
+utils.is.email = emailValidate.validate
+
+
+/**
+ * @param {string} suspect - A suspect value which needs to be validated
+ *
+ * Throws an exception if the value is not an email address
+ */
+utils.is.always.email = function ( suspect ) {
+
+	if ( !emailValidate.validate ( suspect ) ) {
+
+		throw new Error( "Not a valid email address" )
+	}
+}
 
 
 /**
