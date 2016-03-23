@@ -52,7 +52,7 @@ function register( callback ) {
 	// Add/Register routes
 	app.use( "/api/", accountRoutes )
 	app.use( "/graphic/", graphicRoutes )
-	app.use( router );
+	app.use( router )
 
 	// Set app to listen on ports
 	log.info(
@@ -75,15 +75,15 @@ module.exports.register = register
  */
 function attachLogger( request, response, next ) {
 
-	var logger = utils.getLogger();
+	var logger = utils.getLogger()
 
 	// Add all sub function calls to the namespace
 	cls.getNamespace( constants.namespace ).run (
 			function () {
 
 				// look up the session and attach the logger
-				var session = cls.getNamespace( constants.namespace );
-				session.set ( "logger", logger );
+				var session = cls.getNamespace( constants.namespace )
+				session.set ( "logger", logger )
 
 				next()
 			}
@@ -96,7 +96,7 @@ function attachLogger( request, response, next ) {
 function traceRequests( request, response, next ) {
 
 	var log       = utils.getSessionLogger( __filename, traceRequests )
-	var startTime = new Date();
+	var startTime = new Date()
 
 
 	log.info( {
@@ -139,7 +139,7 @@ function traceRequests( request, response, next ) {
 		response.sendFile( fileName )
 	}
 
-	next();
+	next()
 }
 
 // Root -> loads index page
@@ -153,27 +153,27 @@ function routeHome( request, response ) {
 		email:        "",
 		key:          "",
 		resValDialog: ""
-	} );
+	} )
 }
 
 // Resources -> resolves the gives resource
 function manageResources( request, response ) {
 
-	var log = utils.getSessionLogger( __filename, manageResources )
+	var log    = utils.getSessionLogger( __filename, manageResources )
+	var folder = request.params.folder
+	var file   = request.params.file
 
-	var folder = request.params.folder, file = request.params.file;
-
-	log.debug( { folder: folder, file: file }, "Resource requested" );
+	log.debug( { folder: folder, file: file }, "Resource requested" )
 
 	if ( folder === "imgs" ) {
-		response.setHeader( "Content-Type", "image/png" );
+		response.setHeader( "Content-Type", "image/png" )
 	} else if ( folder === "css" ) {
-		response.setHeader( "Content-Type", "text/css" );
+		response.setHeader( "Content-Type", "text/css" )
 	} else if ( folder === "js" ) {
-		response.setHeader( "Content-Type", "text/javascript" );
+		response.setHeader( "Content-Type", "text/javascript" )
 	}
 
-	log.trace( "Sending file" );
+	log.trace( "Sending file" )
 
-	response.tSendFile( constants.root_dir + "/resources/" + folder + "/" + file );
+	response.tSendFile( constants.root_dir + "/resources/" + folder + "/" + file )
 }

@@ -33,7 +33,6 @@
     "no-unexpected-multiline": 2,
     "prefer-spread": 1,
     "brace-style": 1,
-    "camelcase": 1,
     "comma-style": 1,
     "consistent-this": [
       1,
@@ -43,9 +42,7 @@
     "no-nested-ternary": 1,
     "no-trailing-spaces": 1,
     "no-underscore-dangle": 1,
-    "space-before-function-paren": 1,
     "space-infix-ops": 1,
-    "space-return-throw-case": 1,
     "arrow-spacing": 2,
     "constructor-super": 2,
     "no-const-assign": 2,

@@ -22,7 +22,7 @@ exports.code = {
 	HTTP_METHOD_NOT_ALLOWED:    405,
 	HTTP_INTERNAL_SERVER_ERROR: 500
 
-};
+}
 
 exports.message = {
 	OK:                    "SVC - Okay",
@@ -34,4 +34,4 @@ exports.message = {
 	IMAGE_NOT_FOUND:       "SVC - The image you are looking for was not found",
 	METHOD_NOT_ALLOWED:    "SVC - The request was not allowed for unspecific reasons",
 	INTERNAL_SERVER_ERROR: "SVC - An unknown internal server error has occurred"
-};
+}

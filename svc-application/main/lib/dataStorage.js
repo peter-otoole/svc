@@ -10,9 +10,9 @@
  */
 "use strict"
 
-const constants      = require( "./constants.js" );
+const constants      = require( "./constants.js" )
 const utils          = require( "./utils.js" )
-const mysql          = require( 'mysql' );
+const mysql          = require( 'mysql' )
 const connectionConf = {
 	host:     constants.runtime_conf.database.host,
 	port:     constants.runtime_conf.database.port,
@@ -22,9 +22,9 @@ const connectionConf = {
 }
 
 
-const default_timeout = 10 * 1000;
+const default_timeout = 10 * 1000
 
-var connection = mysql.createConnection( connectionConf );
+var connection = mysql.createConnection( connectionConf )
 
 var database = {}
 
@@ -38,7 +38,7 @@ database.connect = function connect( callback ) {
 	var log = utils.getSessionLogger( __filename, connect )
 
 	log.info( connectionConf, "Attempting to connect to the database" )
-	connection.connect( callback );
+	connection.connect( callback )
 }
 
 
@@ -86,4 +86,4 @@ database.createTempUser = function createTempUser( email, passPhrase, creationTi
 }
 
 
-module.exports = database;
+module.exports = database

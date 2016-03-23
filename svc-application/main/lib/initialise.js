@@ -17,7 +17,7 @@
 const constants = require( "./constants.js" )
 const dataStore = require( "./dataStorage.js" )
 const express   = require( "express" )
-const async     = require( "async" );
+const async     = require( "async" )
 const api       = require( "./api.js" )
 const utils     = require( "./utils.js" )
 
@@ -47,7 +47,7 @@ function initialise( callback ) {
 			}
 			],
 			callback
-	);
+	)
 }
 
 module.exports = initialise

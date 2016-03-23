@@ -65,7 +65,7 @@ utils.getSessionLogger = function getSessionLogger( fileName, functionName ) {
 	var logger
 
 	// Process the log origin based on the passed parameters
-	var origin = ( utils.is.string( fileName ) )
+	var origin = utils.is.string( fileName )
 			? path.basename( fileName, ".js" )
 			: constants.unknown_file_name
 
@@ -153,7 +153,7 @@ utils.matchingPassword = function matchingPassword( hashedPassword, suspect ) {
 	is.always.string( suspect )
 
 	// generate hash of the suspect
-	var hash = crypto.createHash( constants.HASH_ALGORITHM );
+	var hash = crypto.createHash( constants.HASH_ALGORITHM )
 	hash.update( suspect + constants.SECRET )
 
 	// compare value and hash
@@ -172,7 +172,7 @@ utils.generateHash = function generateHash( suspect ) {
 	is.always.string( suspect )
 
 	// generate hash of the suspect
-	var hash = crypto.createHash( constants.HASH_ALGORITHM );
+	var hash = crypto.createHash( constants.HASH_ALGORITHM )
 	hash.update( suspect + constants.SECRET )
 
 	return hash

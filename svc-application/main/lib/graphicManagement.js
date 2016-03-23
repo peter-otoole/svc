@@ -10,7 +10,7 @@
  * graphicManagement.js - Main business logic for handling graphics
  *
  */
-"use strict";
+"use strict"
 
 const express = require( "express" )
 
