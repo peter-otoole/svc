@@ -19,8 +19,8 @@ const cls           = require( "continuation-local-storage" )
 const utils         = require( "./utils.js" )
 const codes         = require( "./codes.js" )
 const constants     = require( "./constants.js" )
-const accountManage = require( "./accountManagement.js" )
-const graphicManage = require( "./graphicManagement.js" )
+const accountManage = require( "./account-management.js" )
+const graphicManage = require( "./graphic-management.js" )
 
 /*
  Sets up api listening

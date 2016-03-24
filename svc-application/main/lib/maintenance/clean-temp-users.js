@@ -10,7 +10,7 @@
  */
 "use strict"
 
-const dataStore = require( "../dataStorage" )
+const dataStore = require( "../data-storage" )
 const constants = require( "../constants" )
 const utils     = require( "../utils" )
 

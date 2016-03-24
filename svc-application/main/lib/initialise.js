@@ -14,8 +14,8 @@
  */
 "use strict"
 
-const dataStore      = require( "./dataStorage.js" )
-const cleanTempUsers = require( "./maintenance/clean_temp_users.js" )
+const dataStore      = require( "./data-storage.js" )
+const cleanTempUsers = require( "./maintenance/clean-temp-users.js" )
 const async          = require( "async" )
 const api            = require( "./api.js" )
 const utils          = require( "./utils.js" )
