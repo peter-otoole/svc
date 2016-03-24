@@ -32,7 +32,6 @@
     "valid-typeof": 2,
     "no-unexpected-multiline": 2,
     "prefer-spread": 1,
-    "brace-style": 1,
     "comma-style": 1,
     "consistent-this": [
       1,
@@ -40,7 +39,6 @@
     ],
     "no-inline-comments": 1,
     "no-nested-ternary": 1,
-    "no-trailing-spaces": 1,
     "no-underscore-dangle": 1,
     "space-infix-ops": 1,
     "arrow-spacing": 2,

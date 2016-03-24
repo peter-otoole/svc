@@ -70,6 +70,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `dob` bigint(20) DEFAULT NULL,
   `password` varchar(1000) DEFAULT NULL,
   `salt` varchar(72) DEFAULT NULL,
+  `creation` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

@@ -14,12 +14,11 @@
  */
 "use strict"
 
-const constants = require( "./constants.js" )
-const dataStore = require( "./dataStorage.js" )
-const express   = require( "express" )
-const async     = require( "async" )
-const api       = require( "./api.js" )
-const utils     = require( "./utils.js" )
+const dataStore      = require( "./dataStorage.js" )
+const cleanTempUsers = require( "./maintenance/clean_temp_users.js" )
+const async          = require( "async" )
+const api            = require( "./api.js" )
+const utils          = require( "./utils.js" )
 
 function initialise( callback ) {
 
@@ -29,19 +28,25 @@ function initialise( callback ) {
 
 	async.waterfall(
 			[
-				function ( callback ) {
+				function ( wCallback ) {
 
 					dataStore.connect ( function ( error ) {
 
-						callback( error )
+						wCallback( error )
 
 					} )
 				},
-				function ( callback ) {
+				function ( wCallback ) {
+
+					cleanTempUsers()
+
+					wCallback()
+				},
+				function ( wCallback ) {
 
 					api.register ( function ( error ) {
 
-						callback( error )
+						wCallback( error )
 
 					} )
 			}

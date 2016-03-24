@@ -153,8 +153,8 @@ utils.matchingPassword = function matchingPassword( hashedPassword, suspect ) {
 	is.always.string( suspect )
 
 	// generate hash of the suspect
-	var hash = crypto.createHash( constants.HASH_ALGORITHM )
-	hash.update( suspect + constants.SECRET )
+	var hash = crypto.createHash( constants.hash_algorithm )
+	hash.update( suspect + constants.runtime_conf.app_secret )
 
 	// compare value and hash
 	return hash === hashedPassword
@@ -172,8 +172,8 @@ utils.generateHash = function generateHash( suspect ) {
 	is.always.string( suspect )
 
 	// generate hash of the suspect
-	var hash = crypto.createHash( constants.HASH_ALGORITHM )
-	hash.update( suspect + constants.SECRET )
+	var hash = crypto.createHash( constants.hash_algorithm )
+	hash.update( suspect + constants.runtime_conf.app_secret )
 
 	return hash
 }
