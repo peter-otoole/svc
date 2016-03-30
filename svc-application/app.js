@@ -12,14 +12,14 @@
  */
 "use strict"
 
-var constants      = require( "./lib/constants" )
+var constants      = require( "././constants" )
 constants.root_dir = __dirname
-const utils        = require( "./lib/utils" );
+const utils        = require( "././utils" );
 const cls          = require( "continuation-local-storage" )
 var logger         = utils.getLogger();
 var log            = logger.child ( { origin: "app.startup" } )
 
-const initialise = require( "./lib/initialise" )
+const initialise = require( "././initialise" )
 
 // Create name
 cls.createNamespace( constants.namespace )

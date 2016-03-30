@@ -17,7 +17,7 @@ module.exports = {
 	namespace:                  "session",
 	unknown_file_name:          "unknown",
 	unknown_function_name:      "unknown",
-	runtime_conf:               require( "../configuration/configuration" ),
+	runtime_conf:               require( ".././configuration" ),
 	session_log_file:           "/application_logs/" + new Date().getTime() + ".log",
 	log_console_level:          "trace",
 	log_file_level:             "info",
