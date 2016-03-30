@@ -10,6 +10,7 @@ $RECYCLE.BIN/
 
 # Node modules install folder
 node_modules/
+svc-application/main/node_modules/
 
 # Windows Installer files
 *.cab
@@ -46,3 +47,6 @@ Icon
 
 # Ignore configuration file commit
 configuration.json
+
+# Ignore files ending in log... no need to commit log files
+*.log
