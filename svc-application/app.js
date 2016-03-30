@@ -12,21 +12,21 @@
  */
 "use strict"
 
-var constants      = require( "././constants" )
+var constants      = require( "./lib/constants" )
 constants.root_dir = __dirname
-const utils        = require( "././utils" );
+const utils        = require( "./lib/utils" );
 const cls          = require( "continuation-local-storage" )
-var logger         = utils.getLogger();
+var logger         = utils.getLogger()
 var log            = logger.child ( { origin: "app.startup" } )
 
-const initialise = require( "././initialise" )
+const initialise = require( "./lib/initialise" )
 
 // Create name
 cls.createNamespace( constants.namespace )
 
 
 // Log startup
-log.info ( constants.start_art );
+log.info ( constants.start_art )
 
 
 
@@ -36,7 +36,7 @@ cls.getNamespace( constants.namespace ).run ( function () {
 
 	// Attach logger to startup sequence
 	var session = cls.getNamespace( constants.namespace )
-	session.set( "logger", logger );
+	session.set( "logger", logger )
 
 
 	// Run the application startup
