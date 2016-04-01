@@ -10,13 +10,17 @@
  */
 "use strict"
 
-const express = require( "express" )
+const express        = require( "express" )
+const utils          = require( "./utils" )
+const codes          = require( "./codes" )
+const createTempUser = require( "./users-management/create-temp-user" )
+
 
 function retrieveRoutes() {
 
 	var router = express.Router()
 
-	router.get ( "/placeholder", placeholder )
+	router.post ( "/create-temp-user", createTemporaryUser )
 
 	return router
 }
@@ -25,7 +29,37 @@ function retrieveRoutes() {
 module.exports.retrieveRoutes = retrieveRoutes
 
 
-function placeholder( request, response ) {
+function createTemporaryUser( request, response ) {
 
-	response.status( 200 ).send( "Stubbed API" )
+	var log = utils.getSessionLogger( __filename, createTemporaryUser )
+
+	var email = request.body.email
+
+	log.debug( { email }, "Received request to create a temporary user" )
+
+	if ( !utils.is.email( email ) ) {
+
+		log.warn( { email }, "Email address is not valid" )
+
+		var res = {
+			code:    codes.code.HTTP_UNPROCESSABLE_REQUEST,
+			message: codes.message.INCORRECT_INPUT
+		}
+
+		return response.status( res.code ).send ( res )
+	}
+
+
+	createTempUser( email, ( error, result ) => {
+
+		if ( error ) {
+
+			log.warn( { error, result }, "Failed to create temporary user" )
+		} else {
+
+			log.trace ( { result }, "Temporary user created" )
+		}
+
+		response.status( result.code ).send( result )
+	} )
 }

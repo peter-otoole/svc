@@ -18,19 +18,14 @@ const utils        = require( "./lib/utils" );
 const cls          = require( "continuation-local-storage" )
 var logger         = utils.getLogger()
 var log            = logger.child ( { origin: "app.startup" } )
-
-const initialise = require( "./lib/initialise" )
-
-// Create name
-cls.createNamespace( constants.namespace )
+const initialise   = require( "./lib/initialise" )
 
 
-// Log startup
 log.info ( constants.start_art )
 
 
-
-// Calling the initialise startup within the cls call stack
+// Create namespace - calling the initialise startup within the cls call stack
+cls.createNamespace( constants.namespace )
 cls.getNamespace( constants.namespace ).run ( function () {
 
 

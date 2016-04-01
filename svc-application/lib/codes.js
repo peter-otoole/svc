@@ -20,14 +20,17 @@ exports.code = {
 	HTTP_FORBIDDEN:             403,
 	HTTP_NOT_FOUND:             404,
 	HTTP_METHOD_NOT_ALLOWED:    405,
+	HTTP_UNPROCESSABLE_REQUEST: 422,
 	HTTP_INTERNAL_SERVER_ERROR: 500
-
 }
 
 exports.message = {
+
 	OK:                    "SVC - Okay",
+	CREATED:               "SVC - Requested resource was created",
 	ACCEPTED:              "SVC - Accepted",
 	BAD_REQUEST:           "SVC - The request was not formed correctly",
+	INCORRECT_INPUT:       "SVC - Request was well formed but values were not as expected",
 	ACCESS_DENIED:         "SVC - Requests access token is not valid",
 	FORBIDDEN:             "SVC - You do not have a correct access token to perform this request",
 	ACCOUNT_NOT_FOUND:     "SVC - Account was not found",
