@@ -12,10 +12,8 @@
     "async": "1.5.2",
     "bunyan": "1.7.1",
     "continuation-local-storage" : "3.1.6",
-
     "express-mailer": "0.2.3",
-    "jade": "1.3.0",
-    "ejs": "0.8.5",
+    "pug": "2.0.0-alpha7",
     "socket.io": "0.9.16"
   },
   "license": "MIT"

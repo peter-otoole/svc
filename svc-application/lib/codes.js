@@ -26,15 +26,15 @@ exports.code = {
 
 exports.message = {
 
-	OK:                    "SVC - Okay",
-	CREATED:               "SVC - Requested resource was created",
-	ACCEPTED:              "SVC - Accepted",
-	BAD_REQUEST:           "SVC - The request was not formed correctly",
-	INCORRECT_INPUT:       "SVC - Request was well formed but values were not as expected",
-	ACCESS_DENIED:         "SVC - Requests access token is not valid",
-	FORBIDDEN:             "SVC - You do not have a correct access token to perform this request",
-	ACCOUNT_NOT_FOUND:     "SVC - Account was not found",
-	IMAGE_NOT_FOUND:       "SVC - The image you are looking for was not found",
-	METHOD_NOT_ALLOWED:    "SVC - The request was not allowed for unspecific reasons",
-	INTERNAL_SERVER_ERROR: "SVC - An unknown internal server error has occurred"
+	OK:                    "Okay",
+	CREATED:               "Requested resource was created",
+	ACCEPTED:              "Accepted",
+	BAD_REQUEST:           "The request was not formed correctly",
+	INCORRECT_INPUT:       "Request was well formed but values were not as expected",
+	ACCESS_DENIED:         "Requests access token is not valid",
+	FORBIDDEN:             "You do not have a correct access token to perform this request",
+	ACCOUNT_NOT_FOUND:     "Account was not found",
+	IMAGE_NOT_FOUND:       "The image you are looking for was not found",
+	METHOD_NOT_ALLOWED:    "The request was not allowed for unspecific reasons",
+	INTERNAL_SERVER_ERROR: "An unknown internal server error has occurred"
 }

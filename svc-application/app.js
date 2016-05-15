@@ -14,7 +14,7 @@
 
 var constants      = require( "./lib/constants" )
 constants.root_dir = __dirname
-const utils        = require( "./lib/utils" );
+const utils        = require( "./lib/utils" )
 const cls          = require( "continuation-local-storage" )
 var logger         = utils.getLogger()
 var log            = logger.child ( { origin: "app.startup" } )
