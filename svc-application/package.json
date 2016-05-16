@@ -8,6 +8,7 @@
     "node-uuid": "1.4.7",
     "is": "rgrannell1/is",
     "email-validator": "1.0.4",
+    "body-parser" : "1.15.1",
     "mysql" : "2.10.2",
     "async": "1.5.2",
     "bunyan": "1.7.1",

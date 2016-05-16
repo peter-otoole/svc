@@ -15,11 +15,12 @@
 "use strict"
 
 const express       = require( "express" )
+const bodyParser    = require( "body-parser" )
 const cls           = require( "continuation-local-storage" )
 const utils         = require( "./utils.js" )
 const constants     = require( "./constants.js" )
-const accountManage = require( "./account-management.js" )
-const graphicManage = require( "./graphic-management.js" )
+const accountManage = require( "./routes/account-management.js" )
+const graphicManage = require( "./routes/graphic-management.js" )
 
 /*
  Sets up api listening
@@ -35,6 +36,10 @@ function register( callback ) {
 
 	// Create base routes
 	router.get( "/", routeHome )
+
+	// Add body parser - parse application/x-www-form-urlencoded & parse application/json
+	app.use( bodyParser.urlencoded( { extended: false } ) )
+	app.use( bodyParser.json() )
 
 	// Add a logger instance to the request
 	app.use( attachLogger )
@@ -152,7 +157,7 @@ function routeHome( request, response ) {
 
 
 	// TODO: Check session here
-	if( false ){
+	if ( false ) {
 
 		log.trace ( "Root file requested - session valid" )
 		response.redirect( "public/base/home.html" )
