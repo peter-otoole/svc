@@ -28,11 +28,9 @@ log.info ( constants.start_art )
 cls.createNamespace( constants.namespace )
 cls.getNamespace( constants.namespace ).run ( function () {
 
-
 	// Attach logger to startup sequence
 	var session = cls.getNamespace( constants.namespace )
 	session.set( "logger", logger )
-
 
 	// Run the application startup
 	initialise( function ( error ) {

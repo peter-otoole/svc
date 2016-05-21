@@ -166,7 +166,7 @@ utils.matchingPassword = function matchingPassword( hashedPassword, suspect ) {
  * @param {string} suspect - plain text password
  * @returns {string} hashedPassword
  */
-utils.generateHash = function generateHash( suspect ) {
+utils.generateHash = function generateHash( suspect, salt ) {
 
 	// validate inputs
 	is.always.string( suspect )
