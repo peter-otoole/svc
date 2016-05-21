@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `svc-dev-1`
+-- Database: `svc-dev`
 --
-CREATE DATABASE IF NOT EXISTS `svc-dev-1` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `svc-dev-1`;
+CREATE DATABASE IF NOT EXISTS `svc-dev` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `svc-dev`;
 
 -- --------------------------------------------------------
 

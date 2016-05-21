@@ -14,7 +14,7 @@ const dataStore = require( "../data-storage" )
 const constants = require( "../constants" )
 const utils     = require( "../utils" )
 
-module.exports = function removeUserSchedule() {
+module.exports = function removeUserSchedule( callback ) {
 
 	var log = utils.getSessionLogger( __filename, removeUserSchedule )
 
@@ -30,4 +30,6 @@ module.exports = function removeUserSchedule() {
 			log.info( error, "Schedule to remove users completed" )
 		} )
 	}, constants.temp_user_removal_schedule )
+
+	callback()
 }

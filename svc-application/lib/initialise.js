@@ -27,31 +27,12 @@ function initialise( callback ) {
 	log.info ( "Starting SVC server." )
 
 	async.waterfall(
-			[
-				function ( wCallback ) {
-
-					dataStore.connect ( function ( error ) {
-
-						wCallback( error )
-
-					} )
-				},
-				function ( wCallback ) {
-
-					cleanTempUsers()
-
-					wCallback()
-				},
-				function ( wCallback ) {
-
-					api.register ( function ( error ) {
-
-						wCallback( error )
-
-					} )
-			}
-			],
-			callback
+		[
+			dataStore.connect,
+			cleanTempUsers,
+			api.register
+		],
+		callback
 	)
 }
 

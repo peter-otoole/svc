@@ -34,7 +34,11 @@ module.exports.connect = function connect( callback ) {
 	var log = utils.getSessionLogger( __filename, connect )
 
 	log.info( connectionConf, "Attempting to connect to the database" )
-	connection.connect( callback )
+
+	connection.connect( function( error, result ){
+
+		callback( error )
+	} )
 }
 
 
@@ -57,12 +61,12 @@ module.exports.createTempUser = function createTempUser( email, passPhrase, crea
 
 
 	// Write the prepared statement
-	var id    = utils.generateUUID
+	var id    = utils.generateUUID()
 	var query = {
 		sql:     "INSERT INTO user_temp(id,email,passphrase,creationtime) VALUES(?,?,?,now())",
 		timeout: constants.default_database_timeout
 	}
-	var data  = [ id, email, passPhrase, creationTime.toString() ]
+	var data  = [ id, email, passPhrase ]
 
 
 	// Query database to insert a new entry

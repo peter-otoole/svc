@@ -15,45 +15,82 @@ const codes     = require( "../codes" )
 const utils     = require( "../utils" )
 
 /**
- * Takes an email address and sends sign up details to that address; stores the pass phrase for the user creation in
- * the database as a temporary user.
- *
- * @param {string} email - valid email address
- * @param {function} callback - callback function taking result and error
+ * Expects to be used as middleware, expects email address to be set in the body
  */
-module.exports = function createTempUser( email, callback ) {
+module.exports.validate = function validateTemporaryUser( request, response, next ) {
 
-	var log          = utils.getSessionLogger( __filename, createTempUser )
+	var log = utils.getSessionLogger( __filename, validateTemporaryUser )
+
+	if ( !request.body || !request.body.email || !utils.is.email( request.body.email ) ) {
+
+		log.warn( "Email address is not valid" )
+
+		response.status( codes.code.HTTP_UNPROCESSABLE_REQUEST )
+			.send ( {
+				        code:    codes.code.HTTP_UNPROCESSABLE_REQUEST,
+				        message: codes.message.INCORRECT_INPUT
+			        } )
+	} else {
+
+		request.body.email = request.body.email.toLowerCase()
+		return next()
+	}
+}
+
+
+/**
+ * Expects to be used as middleware, expects email address to be set in the body
+ */
+module.exports.logic = function createTemporaryUser( request, response ) {
+
+	var log          = utils.getSessionLogger( __filename, createTemporaryUser )
 	var passPhrase   = utils.generateUUID() + utils.generateUUID()
 	var creationTime = new Date().getTime()
+	var email        = request.body.email
 
-	// send email
-	// TODO add email sending here.
+	log.debug( { email }, "Received request to create a temporary user" )
 
-	// create db entry
-	dataStore.createTempUser( email, passPhrase, creationTime, ( error, result ) => {
+	var sendEmail = new Promise( ( resolve, reject ) => {
 
-		var res = {}
+		// send email
+		// TODO add email sending here.
 
-		if ( error ) {
+		resolve()
+	} )
 
-			log.warn ( { error, result }, "Unable to create user" )
-			res = {
-				code:    codes.code.HTTP_INTERNAL_SERVER_ERROR,
-				message: codes.code.HTTP_INTERNAL_SERVER_ERROR
+	var updateDataStore = new Promise( ( resolve, reject ) => {
+
+		// create db entry
+		dataStore.createTempUser( email, passPhrase, creationTime, ( error, result ) => {
+
+			if ( error ) {
+
+				log.error( error, "Temporary user creation error" )
+
+				reject( {
+					        code:    codes.code.HTTP_INTERNAL_SERVER_ERROR,
+					        message: codes.message.INTERNAL_SERVER_ERROR
+				        } )
 			}
-		}
-		else {
+			else {
 
-			log.info ( { result }, "Temporary user created successfully" )
-			res = {
-				code:                     codes.code.HTTP_CREATED,
-				message:                  codes.message.CREATED,
-				//TODO remove stubbed response - will be sent over email in production
-				STUBBED_MESSAGE_RESPONSE: result
+				resolve( {
+					         code:            codes.code.HTTP_CREATED,
+					         message:         codes.message.CREATED,
+					         //TODO remove stubbed response - will be sent over email in production
+					         ACTIVATION_CODE: passPhrase
+				         } )
 			}
-		}
+		} )
+	} )
 
-		return callback( error, res )
+	Promise.all( [ sendEmail, updateDataStore ] ).then( result => {
+
+		log.info( result, "Temporary user created successfully" )
+		response.status( result[ 1 ].code ).send( result[ 1 ] )
+	}, result => {
+
+		log.error( "Failed to create temporary user" )
+		response.status( result[ 1 ].code ).send( result[ 1 ] )
 	} )
 }

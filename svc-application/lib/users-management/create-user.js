@@ -64,3 +64,7 @@ module.exports = function createUser( fName, lName, email, dob, password, passPh
 		return callback( error, res )
 	} )
 }
+
+
+module.exports.validate = function(){}
+module.exports.logic = function(){}

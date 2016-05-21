@@ -15,12 +15,12 @@
 "use strict"
 
 const express       = require( "express" )
+const bodyParser    = require( "body-parser" )
 const cls           = require( "continuation-local-storage" )
 const utils         = require( "./utils.js" )
-const codes         = require( "./codes.js" )
 const constants     = require( "./constants.js" )
-const accountManage = require( "./account-management.js" )
-const graphicManage = require( "./graphic-management.js" )
+const accountManage = require( "./routes/account-management.js" )
+const graphicManage = require( "./routes/graphic-management.js" )
 
 /*
  Sets up api listening
@@ -36,31 +36,39 @@ function register( callback ) {
 
 	// Create base routes
 	router.get( "/", routeHome )
-	router.get( "/resources/:folder/:file", manageResources )
+
+	// Add body parser - parse application/x-www-form-urlencoded & parse application/json
+	app.use( bodyParser.urlencoded( { extended: false } ) )
+	app.use( bodyParser.json() )
 
 	// Add a logger instance to the request
 	app.use( attachLogger )
 	app.use( traceRequests )
 
-	app.set( "views", constants.root_dir + "\\views\\base" )
-	app.set( "view engine", "jade" )
+	app.set( "views", constants.root_dir + "/views/emails" )
+	app.set( "view engine", "pug" )
 
 	// Create additional routes
 	var accountRoutes = accountManage.retrieveRoutes()
 	var graphicRoutes = graphicManage.retrieveRoutes()
 
 	// Add/Register routes
+
+	// Resources -> resolves the gives resource
+	app.use( "/public", express.static( constants + "/public" ) )
+
+	// API routers
 	app.use( "/api/", accountRoutes )
 	app.use( "/graphic/", graphicRoutes )
 	app.use( router )
 
 	// Set app to listen on ports
 	log.info(
-			{
-				http_port:  constants.runtime_conf.server.http_port,
-				https_port: constants.runtime_conf.server.https_port
-			},
-			"Listening on ports" )
+		{
+			http_port:  constants.runtime_conf.server.http_port,
+			https_port: constants.runtime_conf.server.https_port
+		},
+		"Listening on ports" )
 	app.listen( constants.runtime_conf.server.http_port )
 	app.listen( constants.runtime_conf.server.https_port )
 
@@ -79,14 +87,14 @@ function attachLogger( request, response, next ) {
 
 	// Add all sub function calls to the namespace
 	cls.getNamespace( constants.namespace ).run (
-			function () {
+		function () {
 
-				// look up the session and attach the logger
-				var session = cls.getNamespace( constants.namespace )
-				session.set ( "logger", logger )
+			// look up the session and attach the logger
+			var session = cls.getNamespace( constants.namespace )
+			session.set ( "logger", logger )
 
-				next()
-			}
+			next()
+		}
 	)
 }
 
@@ -147,33 +155,16 @@ function routeHome( request, response ) {
 
 	var log = utils.getSessionLogger( __filename, routeHome )
 
-	log.debug ( "Root file requested" )
 
-	response.render( "index", {
-		email:        "",
-		key:          "",
-		resValDialog: ""
-	} )
-}
+	// TODO: Check session here
+	if ( false ) {
 
-// Resources -> resolves the gives resource
-function manageResources( request, response ) {
+		log.trace ( "Root file requested - session valid" )
+		response.redirect( "public/base/home.html" )
 
-	var log    = utils.getSessionLogger( __filename, manageResources )
-	var folder = request.params.folder
-	var file   = request.params.file
+	} else {
 
-	log.debug( { folder: folder, file: file }, "Resource requested" )
-
-	if ( folder === "imgs" ) {
-		response.setHeader( "Content-Type", "image/png" )
-	} else if ( folder === "css" ) {
-		response.setHeader( "Content-Type", "text/css" )
-	} else if ( folder === "js" ) {
-		response.setHeader( "Content-Type", "text/javascript" )
+		log.trace ( "Root file requested - no valid session" )
+		response.redirect( "public/base/index.html" )
 	}
-
-	log.trace( "Sending file" )
-
-	response.tSendFile( constants.root_dir + "/resources/" + folder + "/" + file )
 }
