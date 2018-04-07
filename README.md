@@ -2,9 +2,7 @@
 
 This is the source for my university final year project, SVC. 
 
-More documentation and features coming soon, for now please view a video of the project on YouTube at: https://www.youtube.com/watch?v=XG5vwTWZGms 
-
-And Design Definition and Report on DropBox at: https://www.dropbox.com/sh/qupvys1un14eey0/AAB0OEXSuKftkWc8QBcVw1Lda 
+View a video of the project on YouTube at: https://www.youtube.com/watch?v=XG5vwTWZGms 
 
 ##License: 
 
